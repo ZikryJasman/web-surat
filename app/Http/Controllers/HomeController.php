@@ -19,9 +19,6 @@ class HomeController extends Controller
     public function index()
     {
         $data = User::where('level', 'Desa')->limit('1')->first();
-        $data->password = bcrypt('123456');
-        $data->save();
-        // dd($data);
         return redirect(route('home_desa',$data->title_user));
     }
     public function home_desa($title)

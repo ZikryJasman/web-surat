@@ -49,9 +49,9 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h6>Nik</h6>
+                    <h6>Nim</h6>
                     <div class="form-group position-relative has-icon-left">
-                        <input type="text" value="{{$dt->nik}}" readonly="" style="background: transparent;" class="form-control"
+                        <input type="text" value="{{$dt->nim}}" readonly="" style="background: transparent;" class="form-control"
                         placeholder="Lengkapi Biodata Anda" value="">
                         <div class="form-control-icon">
                             <i class="dripicons dripicons-information"></i>
@@ -59,9 +59,9 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h6>Pekerjaan</h6>
+                    <h6>Program Studi</h6>
                     <div class="form-group position-relative has-icon-left">
-                        <input type="text" value="{{$dt->pekerjaan}}" readonly="" style="background: transparent;" class="form-control"
+                        <input type="text" value="{{$dt->program_studi}}" readonly="" style="background: transparent;" class="form-control"
                         placeholder="Lengkapi Biodata Anda" value="">
                         <div class="form-control-icon">
                             <i class="dripicons dripicons-information"></i>
@@ -71,9 +71,9 @@
                 <input type="hidden" value="{{$surat->id_surat}}" name="id_surat">
                 <input type="hidden" value="{{$surat->singkatan}}" name="singkatan">
                 <div class="col-md-6">
-                    <h6>Agama</h6>
+                    <h6>Tahun Ajaran</h6>
                     <div class="form-group position-relative has-icon-left">
-                        <input type="text" value="{{$dt->agama}}" readonly="" style="background: transparent;" class="form-control"
+                        <input type="date" value="{{$dt->tahun_ajaran}}" readonly="" style="background: transparent;" class="form-control"
                         placeholder="Lengkapi Biodata Anda" value="">
                         <div class="form-control-icon">
                             <i class="dripicons dripicons-information"></i>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="col-xl-12">
-                    <h6>Keterangan/Keperluan</h6>
+                    <h6>Catatan Lain</h6>
                     <div class="form-group position-relative has-icon-left">
                         <input type="text" required="" class="form-control" name="keperluan" value="">
                         <div class="form-control-icon">
@@ -127,7 +127,7 @@
             <div class="col-xl-12 mt-2">
                 <button class="btn btn-sm btn-primary form-control">Konfirmasi</button>
             </div>
-            @endforeach                                
+            @endforeach
         </div>
     </form>
 </div>

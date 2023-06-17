@@ -1,12 +1,12 @@
 @extends('desa/layout/app')
-@section('title','Dashboard Kepala Desa')
+@section('title','Dashboard Wakil Dekan')
 @section('content')
 <div class="page-content">
     <section class="row">
         <div class="col-12">
             <div class="row">
                 @foreach($data as $dt)
-                <?php  
+                <?php
                 $jml=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.selesai','=','Sudah di Konfirmasi')->count();
                 ?>
                 <div class="col-lg-3">

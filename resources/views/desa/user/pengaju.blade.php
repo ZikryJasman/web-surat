@@ -11,14 +11,14 @@
             <div class="card-header">
                 Table Pengaju
             </div>
-            <div class="card-body">
+            <div class="card-body" style="overflow-x:scroll;">
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>No. </th>
                             <th>Nama User</th>
                             <th>Email User</th>
-                            <th>Nik</th>
+                            <th>Nim</th>
                             <th>Level</th>
                             <th>Action</th>
                         </tr>
@@ -37,7 +37,7 @@
                                 @endif
                             </td>
                             <td>{{$pgn->email}}</td>
-                            <td>{{$pgn->nik}}</td>
+                            <td>{{$pgn->nim}}</td>
                             <td>
                                 @if($pgn->level=="Pengaju")
                                 <span class="badge bg-primary">{{$pgn->level}}</span>

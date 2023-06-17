@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Province;
 use App\Models\City;
-use App\Models\Village;
-use App\Models\District;
 use App\Models\User;
 use App\Models\Surat;
 use App\Models\Layanan;
+use App\Models\Pengajuan;
 use App\Models\Prosedur;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -19,8 +17,12 @@ class DesaController extends Controller
 {
     public function dashboard($title)
     {
-        $data=User::where('title_user',$title)->get();
-        return view('desa/dashboard/dashboard',compact('data'));    
+        $data=User::where('title_user',$title)->select('id','title_user')->firstOrFail();
+        $data['total_user']=User::where('id','!=',$data['id'])->count();
+        $data['total_surat']=Pengajuan::count();
+        $data['layanan']=Layanan::get();
+        $data['prosedur']=Prosedur::get();
+        return view('desa/dashboard/dashboard',compact('data'));
     }
     public function user_pengaju()
     {
@@ -159,7 +161,7 @@ class DesaController extends Controller
             ]);
             DB::table('users')->where('id',$id)->update([
                 'email'=>$request->email,
-            ]);     
+            ]);
         }else{
             DB::table('profil_desa')->where('user_id',$id)->update([
                 'lokasi_desa'=>$request->lokasi_desa,
@@ -198,18 +200,19 @@ class DesaController extends Controller
             $user->save();
             DB::table('info_lengkap')->insert([
                 'user_id'=>$user->id,
-                'nik'=>$request->nik,
+                'nim'=>$request->nim,
                 'alamat'=>$request->alamat,
-                'agama'=>$request->agama,
+                'tahun_ajaran'=>$request->tahun_ajaran,
                 'telepon'=>$request->telepon,
                 'jenis_kelamin'=>$request->jenis_kelamin,
+                'pangkat'=>$request->pangkat,
                 'tempat'=>$request->tempat,
                 'tgl_lahir'=>$request->tgl_lahir,
                 'foto_profil'=>$namaFileBaru,
-            ]); 
-            return redirect()->back()->with('add','-');              
+            ]);
+            return redirect()->back()->with('add','-');
         }else{
-            return redirect()->back()->with('email','-');              
+            return redirect()->back()->with('email','-');
         }
     }
 

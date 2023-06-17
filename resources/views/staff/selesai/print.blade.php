@@ -28,11 +28,11 @@
   }
 
   footer {
-    position: fixed; 
-    bottom: -30px; 
-    left: 0px; 
+    position: fixed;
+    bottom: -30px;
+    left: 0px;
     right: 0px;
-    height: 50px; 
+    height: 50px;
     font-size: 20px !important;
 
     /** Extra personal styles **/
@@ -62,7 +62,7 @@
         </footer>
 
         <main>
-            <div class="card-body" style="font-family: times new roman;">
+            <div class="card-body" style="overflow-x:scroll;font-family: times new roman;">
                 <table class="table table-bordered" id="table1">
                     <thead>
                         <tr>
@@ -70,21 +70,21 @@
                                 <th>No. </th>
                                 <th>Tanggal Request</th>
                                 <th>Nomor Surat</th>
-                                <th>NIK</th>
+                                <th>NIM</th>
                                 <th>Nama</th>
-                                <th>Keperluan</th>
+                                <th>Catatan Lain</th>
                                 <th>Pengajuan</th>
                             </tr>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no=1; ?>
-                        @foreach($data as $dt)   
+                        @foreach($data as $dt)
                         <tr>
                             <td>{{$no}}.</td>
                             <td>{{$dt->tgl_req}}</td>
                             <td>{{$dt->singkatan}} / {{$dt->nomor_surat}}</td>
-                            <td>{{$dt->nik}}</td>
+                            <td>{{$dt->nim}}</td>
                             <td>{{$dt->name}}</td>
                             <td>{{$dt->keperluan}}</td>
                             <td>{{$dt->nama_surat}}</td>

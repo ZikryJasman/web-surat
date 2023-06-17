@@ -27,14 +27,14 @@
                 Tambah Data
             </button>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="overflow-x:scroll;">
             <table class="table table-striped" id="table1">
                 <thead>
                     <tr>
                         <th>No. </th>
                         <th>Nama Surat</th>
                         <th>Singkatan</th>
-                        <th>Template</th>
+                        {{-- <th>Template</th> --}}
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -45,13 +45,13 @@
                         <td>{{$no}}. </td>
                         <td>{{$dt->nama_surat}}</td>
                         <td>{{$dt->singkatan}}</td>
-                        <td>
+                        {{-- <td>
                             @if($dt->template_id==NULL)
                             <span class="badge bg-danger">Belum Memilih</span>
                             @else
                             <span class="badge bg-success">Sudah Memilih</span>
                             @endif
-                        </td>
+                        </td> --}}
                         <td align="center">
                             <a href="" data-bs-toggle="modal"
                             data-bs-target="#edit{{$dt->id_surat}}" class="btn btn-sm rounded-pill btn-success">

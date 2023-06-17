@@ -30,9 +30,9 @@
                         </div>
                         @if(Auth::user()->level=="Pengaju")
                         <div class="col-lg-6">
-                            <label>PEKERJAAN:</label>
+                            <label>Program Studi:</label>
                             <div class="form-group">
-                                <input type="text" value="{{$cst->pekerjaan}}" name="pekerjaan"
+                                <input type="text" value="{{$cst->program_studi}}" name="program_studi"
                                 class="form-control">
                             </div>
                         </div>
@@ -42,30 +42,37 @@
                             <div class="form-group">
                                 <select class="form-control" name="level">
                                     <option <?php if($cst->level=="Staff"){echo "selected";} ?> value="Staff">Staff</option>
-                                    <option <?php if($cst->level=="Kepala Desa"){echo "selected";} ?> value="Kepala Desa">Kepala Desa</option>
+                                    <option <?php if($cst->level=="Kepala Desa"){echo "selected";} ?> value="Kepala Desa">Wakil Dekan</option>
                                 </select>
                             </div>
                         </div>
 
                         @endif
                         <div class="col-lg-6">
+                            <label>Pangkat/Golongan:</label>
+                            <div class="form-group">
+                                <input type="text" value="{{$cst->pangkat}}" name="pangkat"
+                                class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
                             <label>PONSEL:</label>
                             <div class="form-group">
-                                <input type="number" value="{{$cst->telepon}}" name="telepon" 
+                                <input type="number" value="{{$cst->telepon}}" name="telepon"
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <label>NIK:</label>
+                            <label>NIM:</label>
                             <div class="form-group">
-                                <input type="number" name="nik" value="{{$cst->nik}}"
+                                <input type="number" name="nim" value="{{$cst->nim}}"
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <label>AGAMA:</label>
+                            <label>TAHUN AJARAN:</label>
                             <div class="form-group">
-                                <input type="text" name="agama" value="{{$cst->agama}}"
+                                <input type="text" name="tahun_ajaran" value="{{$cst->tahun_ajaran}}"
                                 class="form-control">
                             </div>
                         </div>

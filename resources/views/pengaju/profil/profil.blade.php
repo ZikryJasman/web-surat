@@ -15,7 +15,7 @@
                         <i class="bi bi-shield-lock"></i> Ganti Password
                     </button>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="overflow-x:scroll;">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
@@ -29,14 +29,14 @@
                                 <td>{{$cst->name}}</td>
                             </tr>
                             <tr>
-                                <td>NIK</td>
+                                <td>NIM</td>
                                 <td>:</td>
-                                <td>{{$cst->nik}}</td>
+                                <td>{{$cst->nim}}</td>
                             </tr>
                             <tr>
-                                <td>AGAMA</td>
+                                <td>TAHUN AJARAN</td>
                                 <td>:</td>
-                                <td>{{$cst->agama}}</td>
+                                <td>{{$dt->tahun_ajaran}}</td>
                             </tr>
                             <tr>
                                 <td>TEMPAT LAHIR</td>
@@ -53,11 +53,16 @@
                                 <td>:</td>
                                 <td>{{$cst->jenis_kelamin}}</td>
                             </tr>
+                            <tr>
+                                <td>Pangkat</td>
+                                <td>:</td>
+                                <td>{{$cst->pangkat??'-'}}</td>
+                            </tr>
                             @if($cst->level=="Pengaju")
                             <tr>
-                                <td>PEKERJAAN</td>
+                                <td>PROGRAM STUDI</td>
                                 <td>:</td>
-                                <td>{{$cst->pekerjaan}}</td>
+                                <td>{{$cst->program_studi}}</td>
                             </tr>
                             @endif
                             <tr>
@@ -80,7 +85,11 @@
                                 <td>FOTO PROFIL</td>
                                 <td>:</td>
                                 <td>
-                                    <img src="{{asset('profil')}}/{{$cst->foto_profil}}" width="70">
+                                    @if (empty($cst->foto_profil))
+                                        Tidak ada gambar
+                                    @else
+                                        <img src="{{asset('profil')}}/{{$cst->foto_profil}}" width="70">
+                                    @endif
                                 </td>
                             </tr>
                             @include('pengaju/profil/ganti')

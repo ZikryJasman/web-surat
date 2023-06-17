@@ -38,19 +38,19 @@
                         <td>{{$dt->jenis_kelamin}}</td>
                     </tr>
                     <tr>
-                        <td>Agama</td>
+                        <td>Tahun Ajaran</td>
                         <td>:</td>
-                        <td>{{$dt->agama}}</td>
+                        <td>{{$dt->tahun_ajaran}}</td>
                     </tr>
                     <tr>
-                        <td>Pekerjaan</td>
+                        <td>Program Studi</td>
                         <td>:</td>
-                        <td>{{$dt->pekerjaan}}</td>
+                        <td>{{$dt->program_studi}}</td>
                     </tr>
                     <tr>
-                        <td>No. NIK</td>
+                        <td>No. NIM</td>
                         <td>:</td>
-                        <td>{{$dt->nik}}</td>
+                        <td>{{$dt->nim}}</td>
                     </tr>
                     <tr>
                         <td>Alamat</td>
@@ -63,7 +63,7 @@
                 <p>Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan untuk sebagaimana mestinya.</p>
                 <div class="row">
                     <div class="col-lg-6">
-                        Tanda Tangan <br> Yang Bersangkutan 
+                        Tanda Tangan <br> Yang Bersangkutan
                         <p class="text" style="padding-top: 29%;">
                             <b><u>{{$dt->name}}</u></b>
                         </p>

@@ -60,7 +60,7 @@ class PengajuController extends Controller
 		$pengajuan -> user_id = Auth::user()->id;
 		$pengajuan -> surat_id = $request -> id_surat;
 		$pengajuan -> status_pengajuan = 'Pengecekan Permohonan';
-		$pengajuan -> tgl_req = date('Y-m-d');
+		$pengajuan -> tgl_req = now();
 		$pengajuan -> keperluan = $request -> keperluan;
 		$pengajuan -> nomor_surat = $bulan.'-'.date('d-Y');
 		$pengajuan -> save();
@@ -104,32 +104,32 @@ class PengajuController extends Controller
 				'email'=>$request->email,
 			]);
 			DB::table('info_lengkap')->where('user_id',Auth::user()->id)->update([
-				'nik'=>$request->nik,
+				'nim'=>$request->nim,
 				'alamat'=>$request->alamat,
-				'agama'=>$request->agama,
+				'tahun_ajaran'=>$request->tahun_ajaran,
 				'telepon'=>$request->telepon,
-				'pekerjaan'=>$request->pekerjaan,
+				'program_studi'=>$request->program_studi,
 				'jenis_kelamin'=>$request->jenis_kelamin,
 				'tempat'=>$request->tempat,
 				'tgl_lahir'=>$request->tgl_lahir,
 				'foto_profil'=>$namaFileBaru,
-			]); 
-			return redirect()->back()->with('up','-');  
+			]);
+			return redirect()->back()->with('up','-');
 		}else{
 			User::where('id',Auth::user()->id)->update([
 				'name'=>$request->name,
 				'email'=>$request->email,
 			]);
 			DB::table('info_lengkap')->where('user_id',Auth::user()->id)->update([
-				'nik'=>$request->nik,
+				'nim'=>$request->nim,
 				'alamat'=>$request->alamat,
-				'agama'=>$request->agama,
-				'pekerjaan'=>$request->pekerjaan,
+				'tahun_ajaran'=>$request->tahun_ajaran,
+				'program_studi'=>$request->program_studi,
 				'jenis_kelamin'=>$request->jenis_kelamin,
 				'tempat'=>$request->tempat,
 				'tgl_lahir'=>$request->tgl_lahir,
-			]); 
-			return redirect()->back()->with('up','-');  
+			]);
+			return redirect()->back()->with('up','-');
 		}
 	}
 }

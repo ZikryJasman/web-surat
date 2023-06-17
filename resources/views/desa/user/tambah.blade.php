@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <label>NAME:</label>
+                            <label>NAMA:</label>
                             <div class="form-group">
                                 <input type="text" required name="name" value=""
                                 class="form-control">
@@ -46,6 +46,13 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
+                            <label>Pangkat / Golongan:</label>
+                            <div class="form-group">
+                                <input type="text" required name="pangkat" value=""
+                                class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
                             <label>PONSEL:</label>
                             <div class="form-group">
                                 <input type="number" required name="telepon" value=""
@@ -55,14 +62,14 @@
                         <div class="col-lg-6">
                             <label>NIM:</label>
                             <div class="form-group">
-                                <input type="number" required name="nik" value=""
+                                <input type="number" required name="nim" value=""
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <label>AGAMA:</label>
+                            <label>TAHUN AJARAN:</label>
                             <div class="form-group">
-                                <input type="text" required name="agama" value=""
+                                <input type="date" required name="tahun_ajaran" value=""
                                 class="form-control">
                             </div>
                         </div>

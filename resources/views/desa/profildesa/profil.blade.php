@@ -14,7 +14,7 @@
                         <i class="bi bi-shield-lock"></i> Ganti Password
                     </button>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="overflow-x:scroll;">
                     <table class="table table-bordered">
                         <tbody>
                             @foreach($data as $cst)

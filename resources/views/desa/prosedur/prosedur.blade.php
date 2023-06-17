@@ -29,7 +29,7 @@
             </button>
             @endif
         </div>
-        <div class="card-body">
+        <div class="card-body" style="overflow-x:scroll;">
             <table class="table table-striped" id="table1">
                 <thead>
                     <tr>

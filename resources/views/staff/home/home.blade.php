@@ -6,10 +6,10 @@
         <div class="col-12">
             <div class="row">
                 @foreach($data as $dt)
-                <?php  
+                <?php
                 $jml=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.selesai','=',NULL)->count();
                 ?>
-                <div class="col-lg-3">
+                <div class="col-sm-6 col-lg-3">
                     <div class="card">
                         <div class="card-body px-3 py-4-5">
                             <div class="row">

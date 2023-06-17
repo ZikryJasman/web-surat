@@ -37,8 +37,8 @@
                                 @foreach($data as $dt)
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="email-id-vertical">NIK</label>
-                                        <p>{{$dt->nik}}</p>
+                                        <label for="email-id-vertical">NIM</label>
+                                        <p>{{$dt->nim}}</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -61,8 +61,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="email-id-vertical">Agama</label>
-                                        <p>{{$dt->agama}}</p>
+                                        <label for="email-id-vertical">Tahun Ajaran</label>
+                                        <p>{{$dt->tahun_ajaran}}</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="email-id-vertical">Jenis Kelaminn</label>
+                                        <label for="email-id-vertical">Jenis Kelamin</label>
                                         <p>{{$dt->jenis_kelamin}}</p>
                                     </div>
                                 </div>
@@ -85,8 +85,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="email-id-vertical">Pekerjaan</label>
-                                        <p>{{$dt->pekerjaan}}</p>
+                                        <label for="email-id-vertical">Program Studi</label>
+                                        <p>{{$dt->program_studi}}</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -98,7 +98,7 @@
                                 <hr>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="email-id-vertical">Keperluan</label>
+                                        <label for="email-id-vertical">Catatan Lain</label>
                                         <p>{{$dt->keperluan}}</p>
                                     </div>
                                 </div>

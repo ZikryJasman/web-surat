@@ -34,7 +34,7 @@
                 {{$dt->tgl_req}}
             </div>
             <div class="col-lg-6">
-                Keperluan
+                Catatan Lain
             </div>
             <div class="col-lg-6">
                 {{$dt->keperluan}}
@@ -46,10 +46,10 @@
                 {{$dt->name}}
             </div>
             <div class="col-lg-6">
-                NIK
+                NIM
             </div>
             <div class="col-lg-6">
-                {{$dt->nik}}
+                {{$dt->nim}}
             </div>
             <div class="col-lg-6">
                 Status Pengajuan
