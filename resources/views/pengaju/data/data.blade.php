@@ -15,7 +15,6 @@
                             <th>No. </th>
                             <th>Tanggal Request</th>
                             <th>Request Surat</th>
-                            <th>Nama Lengkap</th>
                             <th>Status</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -27,9 +26,8 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td>{{ $dt->tgl_req }}</td>
+                                    <td>{{ parseDateIdFull($dt->tgl_req) .' WIB'}}</td>
                                     <td>{{ $dt->nama_surat }}</td>
-                                    <td>{{ $dt->name }}</td>
                                     <td>
                                         @if ($dt->status_pengajuan == 'Pengecekan Permohonan')
                                             <span class="badge bg-danger">Data Sedang <br>di Periksa</span>

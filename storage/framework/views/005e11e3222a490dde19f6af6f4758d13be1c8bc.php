@@ -6,7 +6,7 @@
             <div class="card-header">
                 Table Data
             </div>
-            <div class="card-body">
+            <div class="card-body" style="overflow-x:scroll;">
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
@@ -25,7 +25,7 @@
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td><?php echo e($dt->tgl_req); ?></td>
+                                    <td><?php echo e(parseDateIdFull($dt->tgl_req) .' WIB'); ?></td>
                                     <td><?php echo e($dt->nomor_surat); ?></td>
                                     <td><?php echo e($dt->nama_surat); ?></td>
                                     <td><?php echo e($dt->name); ?></td>

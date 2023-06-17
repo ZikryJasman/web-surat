@@ -39,7 +39,7 @@
                     <?php endif; ?>
 
                 </div>
-                <div class="ms-3 name">
+                <div class="ms-3 name overflow-hidden">
                     <h5 class="font-bold">
                         <?php if(Auth::user()->level=="Desa"): ?>
                         ADMIN DESA
@@ -48,7 +48,7 @@
 
                         <?php endif; ?>
                     </h5>
-                    <h6 class="text-muted mb-0"><?php echo e(Auth::user()->email); ?></h6>
+                    <h6 class="text-muted mb-0 pe-2"><?php echo e(Auth::user()->email); ?></h6>
                 </div>
             </div>
         </div>
@@ -199,6 +199,12 @@
                     </ul>
                 </li>
                 <?php endif; ?>
+                <li class="sidebar-item  <?php echo e(Route::currentRouteName()=='profil_pengaju'?'active':''); ?>">
+                    <a href="<?php echo e(route('profil_pengaju')); ?>" class='sidebar-link'>
+                        <i class="dripicons dripicons-store"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
                 <li class="sidebar-item  ">
                     <a href="<?php echo e(route('logout')); ?>" class='sidebar-link'>
                         <i class="dripicons dripicons-exit"></i>

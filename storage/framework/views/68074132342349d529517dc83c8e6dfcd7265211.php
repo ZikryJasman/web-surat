@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Acc Staff'); ?>
+<?php $__env->startSection('title', 'Data Request Surat Permohonan'); ?>
 
 <?php $__env->startSection('content'); ?>
     <section class="section">
@@ -13,7 +13,6 @@
                             <th>No. </th>
                             <th>Tanggal Request</th>
                             <th>Request Surat</th>
-                            <th>Nama Lengkap</th>
                             <th>Status</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -27,7 +26,6 @@
                                     <th><?= $no ?>. </th>
                                     <td><?php echo e(parseDateIdFull($dt->tgl_req) .' WIB'); ?></td>
                                     <td><?php echo e($dt->nama_surat); ?></td>
-                                    <td><?php echo e($dt->name); ?></td>
                                     <td>
                                         <?php if($dt->status_pengajuan == 'Pengecekan Permohonan'): ?>
                                             <span class="badge bg-danger">Data Sedang <br>di Periksa</span>
@@ -49,12 +47,19 @@
                                         <?php endif; ?>
                                     </td>
                                     <td align="center">
-                                        <a href="<?php echo e(route('staff_cek_berkas', ['surat' => $dt->singkatan, 'id_pengajuan' => $dt->id_pengajuan])); ?>"
+                                        <a href="" data-bs-toggle="modal"
+                                            data-bs-target="#detail<?php echo e($dt->id_pengajuan); ?>"
                                             class="btn btn-sm btn-primary rounded-pill"><i
-                                                class="icon dripicons-preview"></i></a>
+                                                class="icon dripicons-document"></i></a>
+                                        <?php if($dt->selesai == 'Surat Selesai'): ?>
+                                            <a href="<?php echo e(route('cetak_surat', ['surat' => $dt->singkatan, 'id_pengajuan' => $dt->id_pengajuan])); ?>?keyword=print-surat"
+                                                class="btn btn-sm btn-success rounded-pill"><i
+                                                    class="icon dripicons-print"></i></a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                                 <?php $no++; ?>
+                                <?php echo $__env->make('pengaju/data/detail', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php else: ?>
                             <tr class="no-data">
@@ -69,4 +74,4 @@
     </section>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('desa/layout/app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\web-surat\resources\views/staff/acc/acc.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('desa/layout/app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\web-surat\resources\views/pengaju/data/data.blade.php ENDPATH**/ ?>

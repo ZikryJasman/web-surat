@@ -39,7 +39,7 @@
                     @endif
 
                 </div>
-                <div class="ms-3 name">
+                <div class="ms-3 name overflow-hidden">
                     <h5 class="font-bold">
                         @if(Auth::user()->level=="Desa")
                         ADMIN DESA
@@ -47,7 +47,7 @@
                         {{Auth::user()->name}}
                         @endif
                     </h5>
-                    <h6 class="text-muted mb-0">{{Auth::user()->email}}</h6>
+                    <h6 class="text-muted mb-0 pe-2">{{Auth::user()->email}}</h6>
                 </div>
             </div>
         </div>
@@ -198,6 +198,12 @@
                     </ul>
                 </li>
                 @endif
+                <li class="sidebar-item  {{Route::currentRouteName()=='profil_pengaju'?'active':''}}">
+                    <a href="{{route('profil_pengaju')}}" class='sidebar-link'>
+                        <i class="dripicons dripicons-store"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
                 <li class="sidebar-item  ">
                     <a href="{{route('logout')}}" class='sidebar-link'>
                         <i class="dripicons dripicons-exit"></i>

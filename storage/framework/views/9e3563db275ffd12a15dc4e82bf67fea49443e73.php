@@ -11,32 +11,32 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{route('update_profil_pengurus')}}" enctype="multipart/form-data">
-                    @csrf
+                <form method="post" action="<?php echo e(route('update_profil_pengurus')); ?>" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>
                     <div class="row">
                         <div class="col-lg-6">
                             <label>EMAIL:</label>
                             <div class="form-group">
-                                <input type="email" value="{{$cst->email}}" name="email"
+                                <input type="email" value="<?php echo e($cst->email); ?>" name="email"
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <label>NAME:</label>
                             <div class="form-group">
-                                <input type="text" value="{{$cst->name}}" name="name"
+                                <input type="text" value="<?php echo e($cst->name); ?>" name="name"
                                 class="form-control">
                             </div>
                         </div>
-                        @if(Auth::user()->level=="Pengaju")
+                        <?php if(Auth::user()->level=="Pengaju"): ?>
                         <div class="col-lg-6">
                             <label>Program Studi:</label>
                             <div class="form-group">
-                                <input type="text" value="{{$cst->program_studi}}" name="program_studi"
+                                <input type="text" value="<?php echo e($cst->program_studi); ?>" name="program_studi"
                                 class="form-control">
                             </div>
                         </div>
-                        @else
+                        <?php else: ?>
                         <div class="col-lg-6">
                             <label>JABATAN:</label>
                             <div class="form-group">
@@ -47,39 +47,39 @@
                             </div>
                         </div>
 
-                        @endif
+                        <?php endif; ?>
                         <div class="col-lg-6">
                             <label>Pangkat/Golongan:</label>
                             <div class="form-group">
-                                <input type="text" value="{{$cst->pangkat}}" name="pangkat"
+                                <input type="text" value="<?php echo e($cst->pangkat); ?>" name="pangkat"
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <label>PONSEL:</label>
                             <div class="form-group">
-                                <input type="number" value="{{$cst->telepon}}" name="telepon"
+                                <input type="number" value="<?php echo e($cst->telepon); ?>" name="telepon"
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <label>NIM:</label>
                             <div class="form-group">
-                                <input type="number" name="nim" value="{{$cst->nim}}"
+                                <input type="number" name="nim" value="<?php echo e($cst->nim); ?>"
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <label>TAHUN AJARAN:</label>
                             <div class="form-group">
-                                <input type="number" name="tahun_ajaran" value="{{$cst->tahun_ajaran}}"
+                                <input type="number" name="tahun_ajaran" value="<?php echo e($cst->tahun_ajaran); ?>"
                                 class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <label>TEMPAT LAHIR:</label>
                             <div class="form-group">
-                                <input type="text" name="tempat" value="{{$cst->tempat}}"
+                                <input type="text" name="tempat" value="<?php echo e($cst->tempat); ?>"
                                 class="form-control">
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                         <div class="col-lg-4">
                             <label>TANGGAL LAHIR:</label>
                             <div class="form-group">
-                                <input type="date" name="tgl_lahir" value="{{$cst->tgl_lahir}}"
+                                <input type="date" name="tgl_lahir" value="<?php echo e($cst->tgl_lahir); ?>"
                                 class="form-control">
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                         <div class="col-xl-12">
                             <label>ALAMAT: </label>
                             <div class="form-group">
-                                <textarea class="form-control" rows="4" name="alamat">{{$cst->alamat}}</textarea>
+                                <textarea class="form-control" rows="4" name="alamat"><?php echo e($cst->alamat); ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -129,3 +129,4 @@
     </div>
 </div>
 </div>
+<?php /**PATH C:\xampp\htdocs\web-surat\resources\views/pengaju/profil/ubah.blade.php ENDPATH**/ ?>

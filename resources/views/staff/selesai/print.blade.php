@@ -82,7 +82,7 @@
                         @foreach($data as $dt)
                         <tr>
                             <td>{{$no}}.</td>
-                            <td>{{$dt->tgl_req}}</td>
+                            <td>{{parseDateIdFull($dt->tgl_req).' WIB'}}</td>
                             <td>{{$dt->singkatan}} / {{$dt->nomor_surat}}</td>
                             <td>{{$dt->nim}}</td>
                             <td>{{$dt->name}}</td>

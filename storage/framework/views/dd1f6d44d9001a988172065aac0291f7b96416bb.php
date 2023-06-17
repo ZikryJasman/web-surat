@@ -41,7 +41,7 @@
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td><?php echo e($dt->tgl_req); ?></td>
+                                    <td><?php echo e(parseDateIdFull($dt->tgl_req).' WIB'); ?></td>
                                     <td><?php echo e($dt->nomor_surat); ?></td>
                                     <td><?php echo e($dt->nama_surat); ?></td>
                                     <td><?php echo e($dt->name); ?></td>

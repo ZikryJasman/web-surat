@@ -27,7 +27,7 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td>{{ $dt->tgl_req }}</td>
+                                    <td>{{ parseDateIdFull($dt->tgl_req).' WIB' }}</td>
                                     <td>{{ $dt->nama_surat }}</td>
                                     <td>{{ $dt->name }}</td>
                                     <td>
