@@ -53,7 +53,7 @@
                                             class="btn btn-sm btn-primary rounded-pill"><i
                                                 class="icon dripicons-document"></i></a>
                                         @if ($dt->selesai == 'Surat Selesai')
-                                            <a href="{{ route('cetak_surat', ['surat' => $dt->singkatan, 'id_pengajuan' => $dt->id_pengajuan]) }}?keyword=print-surat"
+                                            <a href="{{asset('pengajuan_berkas')}}/{{$dt->upload_berkas}}" target="_blank"
                                                 class="btn btn-sm btn-success rounded-pill"><i
                                                     class="icon dripicons-print"></i></a>
                                         @endif

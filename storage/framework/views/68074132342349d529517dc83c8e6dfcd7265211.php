@@ -52,7 +52,7 @@
                                             class="btn btn-sm btn-primary rounded-pill"><i
                                                 class="icon dripicons-document"></i></a>
                                         <?php if($dt->selesai == 'Surat Selesai'): ?>
-                                            <a href="<?php echo e(route('cetak_surat', ['surat' => $dt->singkatan, 'id_pengajuan' => $dt->id_pengajuan])); ?>?keyword=print-surat"
+                                            <a href="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($dt->upload_berkas); ?>" target="_blank"
                                                 class="btn btn-sm btn-success rounded-pill"><i
                                                     class="icon dripicons-print"></i></a>
                                         <?php endif; ?>

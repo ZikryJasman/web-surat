@@ -42,7 +42,7 @@
                 <div class="ms-3 name overflow-hidden">
                     <h5 class="font-bold">
                         <?php if(Auth::user()->level=="Desa"): ?>
-                        ADMIN DESA
+                        ADMIN
                         <?php else: ?>
                         <?php echo e(Auth::user()->name); ?>
 

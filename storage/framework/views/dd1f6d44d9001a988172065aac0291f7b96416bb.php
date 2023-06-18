@@ -28,7 +28,7 @@
                         <tr>
                             <th>No. </th>
                             <th>Tanggal Request</th>
-                            <th>Nomor Surat</th>
+                            <th>Program Studi</th>
                             <th>Request Surat</th>
                             <th>Nama Lengkap</th>
                             <th>Status</th>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <th><?= $no ?>. </th>
                                     <td><?php echo e(parseDateIdFull($dt->tgl_req).' WIB'); ?></td>
-                                    <td><?php echo e($dt->nomor_surat); ?></td>
+                                    <td><?php echo e($dt->program_studi); ?></td>
                                     <td><?php echo e($dt->nama_surat); ?></td>
                                     <td><?php echo e($dt->name); ?></td>
                                     <td>

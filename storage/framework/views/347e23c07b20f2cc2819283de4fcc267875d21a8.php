@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Cetak Surat'); ?>
+<?php $__env->startSection('title', 'Cek Surat Acc'); ?>
 
 <?php $__env->startSection('content'); ?>
     <section class="section">
@@ -25,7 +25,7 @@
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td><?php echo e(parseDateIdFull($dt->tgl_req).' WIB'); ?></td>
+                                    <td><?php echo e(parseDateIdFull($dt->tgl_req) .' WIB'); ?></td>
                                     <td><?php echo e($dt->nama_surat); ?></td>
                                     <td><?php echo e($dt->name); ?></td>
                                     <td>
@@ -49,7 +49,7 @@
                                         <?php endif; ?>
                                     </td>
                                     <td align="center">
-                                        <a href="<?php echo e(route('cetak', ['surat' => $dt->singkatan, 'id_pengajuan' => $dt->id_pengajuan])); ?>?keyword=cek-surat"
+                                        <a href="<?php echo e(route('ttd', ['surat' => $dt->singkatan, 'id_pengajuan' => $dt->id_pengajuan])); ?>?keyword=cek-surat"
                                             class="btn btn-sm btn-primary rounded-pill"><i
                                                 class="icon dripicons-document-edit"></i></a>
                                     </td>
@@ -69,4 +69,4 @@
     </section>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('desa/layout/app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\web-surat\resources\views/staff/cetak/cetak.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('desa/layout/app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\web-surat\resources\views/kepaladesa/acc/acc.blade.php ENDPATH**/ ?>

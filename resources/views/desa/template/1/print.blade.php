@@ -13,13 +13,12 @@
     <link rel="stylesheet" href="{{asset('template/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css')}}">
     <link rel="stylesheet" href="{{asset('template/dist/assets/css/app.css')}}">
 </head>
-
 <body style="background: white;color: black;">
-    @foreach($data as $dt)
+    @foreach($data['user'] as $dt)
     <div class="container-fluid" style="background: white;">
         <div class="row">
             <div class="col-xl-12">
-                @foreach($desa as $ds)
+                @foreach($data['desa'] as $ds)
                 <center>
                     <img src="{{asset('foto')}}/{{$ds->logo}}" alt="avatar" class="img pt-2" width="65" style="float: left;">
                     PEMERINTAHAN {{$ds->name_city}} <br>
@@ -95,7 +94,7 @@
                             <td align="center" class="text">
                                 <img src="{{asset($dt->ttd)}}" class="text pt-1" height="95"> <br>
                                 @if(Auth::user()->level!=="Kepala Desa")
-                                @foreach($kepala as $kpl)
+                                @foreach($data['kepala'] as $kpl)
                                 <p><b><u>{{$kpl->name}}</u></b></p>
                                 @endforeach
                                 @else

@@ -14,7 +14,7 @@
                         <tr>
                             <th>No. </th>
                             <th>Tanggal Request</th>
-                            <th>Nomor Surat</th>
+                            <th>Program Studi</th>
                             <th>Request Surat</th>
                             <th>Nama Lengkap</th>
                             <th>Status</th>
@@ -28,7 +28,7 @@
                                 <tr>
                                     <th><?= $no ?>. </th>
                                     <td>{{ parseDateIdFull($dt->tgl_req) .' WIB'}}</td>
-                                    <td>{{ $dt->nomor_surat }}</td>
+                                    <td>{{ $dt->program_studi }}</td>
                                     <td>{{ $dt->nama_surat }}</td>
                                     <td>{{ $dt->name }}</td>
                                     <td>

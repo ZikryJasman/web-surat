@@ -98,12 +98,12 @@ Route::group(['middleware'=>['auth','ceklevel:Pengaju,Staff,Kepala Desa,Desa']],
 	Route::get('pengajuan/permohonan-surat/staff/laporan/print/{awal}/{akhir}',[StaffController::class,'print'])->name('print');
 
 // Kepala Desa
-	Route::get('pengajuan/dashboard-kepala-desa',[KepalaDesaController::class,'dashboard_kepaladesa'])->name('dashboard_kepaladesa');
-	Route::get('pengajuan/permohonan-surat/kepaladesa/cek-surat/{surat}',[KepalaDesaController::class,'kepaladesa_acc'])->name('kepaladesa_acc');
-	Route::get('pengajuan/permohonan-surat/kepaladesa/cek-surat/ttd/{surat}/{id_pengajuan}',[KepalaDesaController::class,'ttd'])->name('ttd');
-	Route::get('pengajuan/permohonan-surat/kepaladesa/cek-surat/form-ttd/{id_pengajuan}',[KepalaDesaController::class,'form_ttd'])->name('form_ttd');
-	Route::post('pengajuan/permohonan-surat/kepaladesa/cek-surat/ttd/upload/{id_pengajuan}',[KepalaDesaController::class,'ttd_upload'])->name('ttd_upload');
-	Route::post('pengajuan/permohonan-surat/kepaladesa/cek-surat/ttd/confirm/{id_pengajuan}',[KepalaDesaController::class,'confirm_ttd'])->name('confirm_ttd');
+	Route::get('pengajuan/dashboard-wakil-dekan',[KepalaDesaController::class,'dashboard_kepaladesa'])->name('dashboard_kepaladesa');
+	Route::get('pengajuan/permohonan-surat/wakildekan/cek-surat/{surat}',[KepalaDesaController::class,'kepaladesa_acc'])->name('kepaladesa_acc');
+	Route::get('pengajuan/permohonan-surat/wakildekan/cek-surat/ttd/{surat}/{id_pengajuan}',[KepalaDesaController::class,'ttd'])->name('ttd');
+	Route::get('pengajuan/permohonan-surat/wakildekan/cek-surat/form-ttd/{id_pengajuan}',[KepalaDesaController::class,'form_ttd'])->name('form_ttd');
+	Route::post('pengajuan/permohonan-surat/wakildekan/cek-surat/ttd/upload/{id_pengajuan}',[KepalaDesaController::class,'ttd_upload'])->name('ttd_upload');
+	Route::post('pengajuan/permohonan-surat/wakildekan/cek-surat/ttd/confirm/{id_pengajuan}',[KepalaDesaController::class,'confirm_ttd'])->name('confirm_ttd');
 });
 
 Route::get('back/auth-logout',[HomeController::class,'logout'])->name('logout');

@@ -14,7 +14,7 @@
                         <i class="bi bi-shield-lock"></i> Ganti Password
                     </button>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="overflow-x:scroll;">
                     <table class="table table-bordered">
                         <tbody>
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cst): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -83,4 +83,5 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
         <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('desa/layout/app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\web-surat\resources\views/desa/profildesa/profil.blade.php ENDPATH**/ ?>
