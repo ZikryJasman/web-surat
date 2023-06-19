@@ -9703,3 +9703,19 @@
 [stacktrace]
 #0 {main}
 "} 
+[2023-06-19 06:01:01] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-19 06:02:02] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-19 06:03:01] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-19 06:04:01] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
