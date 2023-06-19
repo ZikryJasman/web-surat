@@ -69,7 +69,7 @@
             <script src="{{asset('template/dist/assets/js/main.js')}}"></script>
             <script src="{{asset('template/dist/assets/js/extensions/sweetalert2.js')}}"></script>
             <script src="{{asset('template/dist/assets/vendors/sweetalert2/sweetalert2.all.min.js')}}"></script>
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             @if(session('yes'))
             <script type="text/javascript">
@@ -189,7 +189,7 @@
                         });
                       }
                   }
-              });     
+              });
 }
 </script>
 
