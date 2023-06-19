@@ -71,7 +71,12 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'program.index' ? 'active' : '' }} ">
+                        <a href="{{ route('program.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Program Studi</span>
+                        </a>
+                    </li>
                     <li
                         class="sidebar-item  has-sub {{ in_array(Route::currentRouteName(), ['user_pengaju', 'user_pengurus']) ? 'active' : '' }}">
                         <a href="#" class='sidebar-link'>

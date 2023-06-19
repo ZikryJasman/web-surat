@@ -239,4 +239,35 @@ class DesaController extends Controller
         ]);
         return redirect(route('data_surat', Auth::user()->title_user))->with('up', '-');
     }
+
+    public function programIndex(Request $request)
+    {
+        $data = Program::orderByDesc('id')->paginate(5)->withQueryString();
+        return view('desa.program.index', compact('data'));
+    }
+
+    public function programStore(Request $request)
+    {
+        $program = new Program();
+        $program->nama = $request->nama;
+        $program->save();
+        $data = Program::orderByDesc('id')->paginate(5)->withQueryString();
+        return view('desa.program.index', compact('data'));
+    }
+
+    public function programUpdate(Request $request, $id)
+    {
+        Program::where('id', $id)->update([
+            'nama' => $request->nama,
+        ]);
+        $data = Program::orderByDesc('id')->paginate(5)->withQueryString();
+        return view('desa.program.index', compact('data'));
+    }
+    public function programDelete($id)
+    {
+        $te = Program::where('id', $id)->firstOrFail();
+        $te->delete();
+        $data = Program::orderByDesc('id')->paginate(5)->withQueryString();
+        return view('desa.program.index', compact('data'));
+    }
 }

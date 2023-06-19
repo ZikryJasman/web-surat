@@ -68,6 +68,13 @@ Route::group(['middleware'=>['auth','ceklevel:Desa']],function()
 	Route::post('data-prosedur/edit/{id_prosedur}',[DesaController::class,'edit_prosedur'])->name('edit_prosedur');
 	Route::get('data-prosedur/hapus/{id_prosedur}',[DesaController::class,'hapus_prosedur'])->name('hapus_prosedur');
 
+    // program
+	Route::get('pengajuan/program',[DesaController::class,'programIndex'])->name('program.index');
+	Route::post('pengajuan/program',[DesaController::class,'programStore'])->name('program.store');
+	Route::post('pengajuan/program/{id}',[DesaController::class,'programUpdate'])->name('program.update');
+	Route::get('pengajuan/program/hapus/{id}',[DesaController::class,'programDelete'])->name('program.delete');
+
+
 	Route::get('{title}/template-surat/{id_surat}',[DesaController::class,'template'])->name('template');
 	Route::post('template-surat/custom-template/{template_id}',[DesaController::class,'custom_template'])->name('custom_template');
 });
@@ -104,6 +111,7 @@ Route::group(['middleware'=>['auth','ceklevel:Pengaju,Staff,Kepala Desa,Desa']],
 	Route::get('pengajuan/permohonan-surat/wakildekan/cek-surat/form-ttd/{id_pengajuan}',[KepalaDesaController::class,'form_ttd'])->name('form_ttd');
 	Route::post('pengajuan/permohonan-surat/wakildekan/cek-surat/ttd/upload/{id_pengajuan}',[KepalaDesaController::class,'ttd_upload'])->name('ttd_upload');
 	Route::post('pengajuan/permohonan-surat/wakildekan/cek-surat/ttd/confirm/{id_pengajuan}',[KepalaDesaController::class,'confirm_ttd'])->name('confirm_ttd');
+
 });
 
 Route::get('back/auth-logout',[HomeController::class,'logout'])->name('logout');
