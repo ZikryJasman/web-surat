@@ -61,7 +61,7 @@
                 <div class="col-md-6">
                     <h6>Program Studi</h6>
                     <div class="form-group position-relative has-icon-left">
-                        <input type="text" value="{{$dt->program_studi}}" readonly="" style="background: transparent;" class="form-control"
+                        <input type="text" value="{{$dt->program->nama ?? ''}}" readonly="" style="background: transparent;" class="form-control"
                         placeholder="Lengkapi Biodata Anda" value="">
                         <div class="form-control-icon">
                             <i class="dripicons dripicons-information"></i>

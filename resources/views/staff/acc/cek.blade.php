@@ -31,7 +31,7 @@
                                                             Lengkap</option>
                                                     </select>
                                                     <label for="first-name-vertical" style="padding-top: .5rem">Upload
-                                                        Berkas</label>
+                                                        Berkas Word</label>
                                                     <div class="form-group position-relative">
                                                         <input required type="file" name="upload_berkas"
                                                             id="upload_berkas" class="form-control">
@@ -104,7 +104,7 @@
                                         <div class="col-sm-6 col-12">
                                             <div class="form-group">
                                                 <label for="email-id-vertical">Program Studi</label>
-                                                <p class="text-black">{{ $dt->program_studi }}</p>
+                                                <p class="text-black">{{ $dt->program->nama ?? '' }}</p>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-12">

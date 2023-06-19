@@ -7,6 +7,8 @@
                 <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php
                 $jml=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.selesai','=','Sudah di Konfirmasi')->count();
+                $jml2=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.selesai','Surat Selesai')->count();
+                $jml3=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.status_pengajuan','Pengecekan Permohonan')->count();
                 ?>
                 <div class="col-lg-3">
                     <div class="card">
@@ -19,7 +21,11 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold"><a href=""><?php echo e($dt->singkatan); ?></a></h6>
-                                    <h6 class="font-extrabold mb-0"><?php echo e($jml); ?></h6>
+                                    <h6 class="font-extrabold mb-0"><?php echo e($jml .' Menunggu Approve'); ?></h6>
+                                    <hr>
+                                    <h6 class="font-extrabold mb-0"><?php echo e($jml2 .' Selesai'); ?></h6>
+                                    <hr>
+                                    <h6 class="font-extrabold mb-0"><?php echo e($jml3 .' Menunggu Staff'); ?></h6>
                                 </div>
                             </div>
                         </div>

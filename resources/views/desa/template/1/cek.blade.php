@@ -45,7 +45,7 @@
                     <tr>
                         <td>Program Studi</td>
                         <td>:</td>
-                        <td>{{$dt->program_studi}}</td>
+                        <td>{{$dt->program->nama ??''}}</td>
                     </tr>
                     <tr>
                         <td>No. NIM</td>

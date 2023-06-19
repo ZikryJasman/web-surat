@@ -69,7 +69,7 @@
                         <div class="col-lg-6">
                             <label>TAHUN AJARAN:</label>
                             <div class="form-group">
-                                <input type="date" required name="tahun_ajaran" value=""
+                                <input type="number" required name="tahun_ajaran" value=""
                                 class="form-control">
                             </div>
                         </div>

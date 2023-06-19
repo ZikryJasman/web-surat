@@ -6,7 +6,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Table Data
+                Data Request
             </div>
             <div class="card-body" style="overflow-x:scroll;">
                 <table class="table table-striped" id="table1">
@@ -62,6 +62,9 @@
                                 <?php $no++; ?>
                                 @include('pengaju/data/detail')
                             @endforeach
+                            <tr class="no-data">
+                                <td class="text-center" colspan="14">{{ $data->onEachSide(5)->links() }}</td>
+                            </tr>
                         @else
                             <tr class="no-data">
                                 <td class="text-center" colspan="14">Tidak ada data</td>

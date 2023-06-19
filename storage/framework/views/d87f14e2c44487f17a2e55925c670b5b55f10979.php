@@ -62,7 +62,7 @@
                             <tr>
                                 <td>PROGRAM STUDI</td>
                                 <td>:</td>
-                                <td><?php echo e($cst->program_studi); ?></td>
+                                <td><?php echo e($cst->program->nama ?? ''); ?></td>
                             </tr>
                             <?php endif; ?>
                             <tr>

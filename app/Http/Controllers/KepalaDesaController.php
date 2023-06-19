@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Surat;
@@ -17,10 +18,18 @@ class KepalaDesaController extends Controller
 		$data=Surat::all();
 		return view('kepaladesa/home/home',compact('data'));
 	}
-	public function kepaladesa_acc($surat)
+	public function kepaladesa_acc(Request $request,$surat)
 	{
-		$data=User::join('info_lengkap','users.id','=','info_lengkap.user_id')->join('pengajuan','pengajuan.user_id','=','info_lengkap.user_id')->join('surat','surat.id_surat','=','pengajuan.surat_id')->where('surat.singkatan',$surat)->where('pengajuan.selesai','=','Sudah di Konfirmasi')->get();
-		return view('kepaladesa/acc/acc',compact('data'));
+        $program = Program::all();
+        if ($request->search) {
+            $data = User::where('name', 'like', "%$request->search%")->join('info_lengkap','users.id','=','info_lengkap.user_id')->join('pengajuan','pengajuan.user_id','=','info_lengkap.user_id')->join('surat','surat.id_surat','=','pengajuan.surat_id')->where('surat.singkatan',$surat)->where('pengajuan.selesai','=','Sudah di Konfirmasi')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        }else if ($request->program_id) {
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap','users.id','=','info_lengkap.user_id')->join('pengajuan','pengajuan.user_id','=','info_lengkap.user_id')->join('surat','surat.id_surat','=','pengajuan.surat_id')->where('surat.singkatan',$surat)->where('pengajuan.selesai','=','Sudah di Konfirmasi')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        }else if ($request->search && $request->program_id) {
+            $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap','users.id','=','info_lengkap.user_id')->join('pengajuan','pengajuan.user_id','=','info_lengkap.user_id')->join('surat','surat.id_surat','=','pengajuan.surat_id')->where('surat.singkatan',$surat)->where('pengajuan.selesai','=','Sudah di Konfirmasi')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        } else
+		$data=User::join('info_lengkap','users.id','=','info_lengkap.user_id')->join('pengajuan','pengajuan.user_id','=','info_lengkap.user_id')->join('surat','surat.id_surat','=','pengajuan.surat_id')->where('surat.singkatan',$surat)->where('pengajuan.selesai','=','Sudah di Konfirmasi')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+		return view('kepaladesa/acc/acc',compact('data','program'));
 	}
 	public function ttd($surat,$id_pengajuan)
 	{

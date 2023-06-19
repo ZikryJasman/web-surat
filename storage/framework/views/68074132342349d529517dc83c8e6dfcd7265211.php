@@ -4,7 +4,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Table Data
+                Data Request
             </div>
             <div class="card-body" style="overflow-x:scroll;">
                 <table class="table table-striped" id="table1">
@@ -61,6 +61,9 @@
                                 <?php $no++; ?>
                                 <?php echo $__env->make('pengaju/data/detail', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <tr class="no-data">
+                                <td class="text-center" colspan="14"><?php echo e($data->onEachSide(5)->links()); ?></td>
+                            </tr>
                         <?php else: ?>
                             <tr class="no-data">
                                 <td class="text-center" colspan="14">Tidak ada data</td>

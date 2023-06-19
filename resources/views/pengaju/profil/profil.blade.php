@@ -62,7 +62,7 @@
                             <tr>
                                 <td>PROGRAM STUDI</td>
                                 <td>:</td>
-                                <td>{{$cst->program_studi}}</td>
+                                <td>{{$cst->program->nama ?? ''}}</td>
                             </tr>
                             @endif
                             <tr>

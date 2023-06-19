@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\SendMail;
+use App\Models\Program;
 
 class HomeController extends Controller
 {
@@ -35,8 +36,9 @@ class HomeController extends Controller
     }
     public function register($title)
     {
+        $program=Program::all();
         $data = User::where('title_user', $title)->where('users.status_user', 'True')->get();
-        return view('desa/register', compact('data'));
+        return view('desa/register', compact('data','program'));
     }
     public function daftar(Request $request)
     {
@@ -52,6 +54,7 @@ class HomeController extends Controller
             $users->password = Hash::make($request->password);
             $users->level = 'Pengaju';
             $users->status_user = 'True';
+            $users->program_id = $request->program_id;
             $users->save();
             DB::table('info_lengkap')->insert([
                 'user_id' => $users->id,

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengajuan;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Surat;
@@ -20,10 +21,18 @@ class StaffController extends Controller
         $data = Surat::all();
         return view('staff/home/home', compact('data'));
     }
-    public function staff_acc($surat)
+    public function staff_acc(Request $request, $surat)
     {
-        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->get();
-        return view('staff/acc/acc', compact('data'));
+        $program = Program::all();
+        if ($request->search) {
+            $data = User::where('name', 'like', "%$request->search%")->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        }else if ($request->program_id) {
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        }else if ($request->search && $request->program_id) {
+            $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        } else
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        return view('staff/acc/acc', compact('data', 'program'));
     }
     public function staff_cek_berkas($surat, $id_pengajuan)
     {
@@ -55,6 +64,27 @@ class StaffController extends Controller
         return redirect(route('staff_acc', $singkatan))->with('up', '-');
     }
 
+    public function surat_selesai(Request $request)
+    {
+        $program = Program::all();
+        if ($request->search) {
+            $data = User::where('name', 'like', "%$request->search%")->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        }else if ($request->program_id) {
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        }else if ($request->search && $request->program_id) {
+            $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        } else
+        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        return view('staff/selesai/index', compact('data','program'));
+    }
+    public function laporan(Request $request)
+    {
+        if ($request->awal && $request->akhir)
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        else
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        return view('staff/selesai/laporan', compact('data'));
+    }
 
     public function staff_cetak($surat)
     {
@@ -88,16 +118,6 @@ class StaffController extends Controller
                 return $pdf->download($dt->nama_surat . ' ' . $dt->name . '.pdf');
             }
         }
-    }
-    public function surat_selesai()
-    {
-        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->get();
-        return view('staff/selesai/index', compact('data'));
-    }
-    public function laporan(Request $request)
-    {
-        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->get();
-        return view('staff/selesai/laporan', compact('data'));
     }
     public function print($awal, $akhir)
     {

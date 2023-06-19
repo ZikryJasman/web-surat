@@ -9,6 +9,7 @@ use App\Models\Village;
 use App\Models\District;
 use App\Models\User;
 use App\Models\Pengajuan;
+use App\Models\Program;
 use App\Models\Surat;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -82,14 +83,15 @@ class PengajuController extends Controller
     public function data_request($singkatan)
     {
         // $data=User::join('info_lengkap','users.id','=','info_lengkap.user_id')->join('pengajuan','pengajuan.desa_id','=','info_lengkap.desa_id')->join('surat','surat.id_surat','=','pengajuan.surat_id')->where('pengajuan.user_id',Auth::user()->id)->where('surat.singkatan',$singkatan)->where('pengajuan.desa_id',session('desaid'))->where('users.level','Pengaju')->get();
-        $data = DB::table('pengajuan')->join('users', 'users.id', '=', 'pengajuan.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $singkatan)->join('info_lengkap', 'info_lengkap.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->where('users.level', 'Pengaju')->get();
+        $data = DB::table('pengajuan')->join('users', 'users.id', '=', 'pengajuan.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $singkatan)->join('info_lengkap', 'info_lengkap.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->where('users.level', 'Pengaju')->orderByDesc('id_pengajuan')->paginate(5);
         $pelengkap = DB::table('berkas_pengajuan')->get();
         return view('pengaju.data.data', compact('data', 'pelengkap'));
     }
     public function profil_pengaju()
     {
-        $data = User::join('info_lengkap', 'info_lengkap.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->get();
-        return view('pengaju/profil/profil', compact('data'));
+        $program = Program::all();
+        $data = User::with(['program:id,nama'])->join('info_lengkap', 'info_lengkap.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->get();
+        return view('pengaju/profil/profil', compact('data', 'program'));
     }
     public function update_profil_pengurus(Request $request)
     {
@@ -103,13 +105,13 @@ class PengajuController extends Controller
             User::where('id', Auth::user()->id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
+                'program_id' => $request->program_id,
             ]);
             DB::table('info_lengkap')->where('user_id', Auth::user()->id)->update([
                 'nim' => $request->nim,
                 'alamat' => $request->alamat,
                 'tahun_ajaran' => $request->tahun_ajaran,
                 'telepon' => $request->telepon,
-                'program_studi' => $request->program_studi,
                 'pangkat' => $request->pangkat,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'tempat' => $request->tempat,
@@ -121,12 +123,12 @@ class PengajuController extends Controller
             User::where('id', Auth::user()->id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
+                'program_id' => $request->program_id,
             ]);
             DB::table('info_lengkap')->where('user_id', Auth::user()->id)->update([
                 'nim' => $request->nim,
                 'alamat' => $request->alamat,
                 'tahun_ajaran' => $request->tahun_ajaran,
-                'program_studi' => $request->program_studi,
                 'pangkat' => $request->pangkat,
                 'jenis_kelamin' => $request->jenis_kelamin,
                 'tempat' => $request->tempat,

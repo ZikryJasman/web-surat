@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="page-heading">
-        <h3>Dashboard Desa</h3>
+        <h3>Dashboard</h3>
     </div>
     <div class="page-content">
         <section class="row">

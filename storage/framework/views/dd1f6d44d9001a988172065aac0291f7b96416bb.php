@@ -6,13 +6,12 @@
             <div class="col-lg-5 pb-4" style="background: white;box-shadow:2px 2px grey;">
                 <form method="get">
                     <?php echo csrf_field(); ?>
-                    <input type="date" required="" class="form-control mt-4" name="awal">
+                    <label class="mt-4" for="">Tanggal Pengajuan</label>
+                    <input type="date" required="" class="form-control mt-1" name="awal">
+                    <label for="">Batas Tanggal Pengajuan</label>
                     <input type="date" required="" class="form-control mt-1" name="akhir">
                     <button class="btn btn-sm btn-primary mt-2">Search</button>
-                    <?php if(!empty($_GET['awal'])): ?>
-                        <a href="<?php echo e(route('print', ['awal' => $_GET['awal'], 'akhir' => $_GET['akhir']])); ?>"
-                            class="btn btn-sm btn-success mt-2">Cetak</a>
-                    <?php endif; ?>
+                    
                 </form>
             </div>
         </div>
@@ -20,7 +19,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Table Data
+                Laporan Surat Sudah Selesai
             </div>
             <div class="card-body" style="overflow-x:scroll;">
                 <table class="table table-striped" id="table1">
@@ -33,6 +32,7 @@
                             <th>Nama Lengkap</th>
                             <th>Status</th>
                             <th>Keterangan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,8 +41,8 @@
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td><?php echo e(parseDateIdFull($dt->tgl_req).' WIB'); ?></td>
-                                    <td><?php echo e($dt->program_studi); ?></td>
+                                    <td><?php echo e(parseDateIdFull($dt->tgl_req) . ' WIB'); ?></td>
+                                    <td><?php echo e($dt->program->nama ?? ''); ?></td>
                                     <td><?php echo e($dt->nama_surat); ?></td>
                                     <td><?php echo e($dt->name); ?></td>
                                     <td>
@@ -65,9 +65,15 @@
                                             </span>
                                         <?php endif; ?>
                                     </td>
+                                    <td> <a href="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($dt->upload_berkas); ?>" target="_blank"
+                                            class="btn btn-sm btn-success rounded-pill"><i
+                                                class="icon dripicons-print"></i></a></td>
                                 </tr>
                                 <?php $no++; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <tr class="no-data">
+                                <td class="text-center" colspan="14"><?php echo e($data->onEachSide(5)->links()); ?></td>
+                            </tr>
                         <?php else: ?>
                             <tr class="no-data">
                                 <td class="text-center" colspan="14">Tidak ada data</td>
