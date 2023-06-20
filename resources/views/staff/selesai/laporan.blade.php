@@ -20,7 +20,11 @@
                     <label for="">Batas Tanggal Pengajuan</label>
                     <input type="date" class="form-control mt-1" name="akhir">
                     <button class="btn btn-sm btn-primary mt-2">Search</button>
-                    <a href="{{route('laporan')}}" class="btn btn-sm btn-info mt-2">Reset</a>
+                    <a href="{{ route('laporan') }}" class="btn btn-sm btn-info mt-2">Reset</a>
+                    {{-- @if (!empty($_GET['awal'])) --}}
+                    <a href="{{ route('exportPdf', ['awal' => $_GET['awal']?? '', 'akhir' => $_GET['akhir']?? '', 'program_id' => $_GET['program_id']?? '']) }}"
+                        class="btn btn-sm btn-success mt-2">Export PDF</a>
+                    {{-- @endif --}}
                     {{-- @if (!empty($_GET['awal']))
                         <a href="{{ route('print', ['awal' => $_GET['awal'], 'akhir' => $_GET['akhir']]) }}"
                             class="btn btn-sm btn-success mt-2">Cetak</a>
@@ -32,7 +36,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                {{$count ?? 'Tidak ada'}} Laporan Surat Sudah Selesai
+                {{ $count ?? 'Tidak ada' }} Laporan Surat Sudah Selesai
             </div>
             <div class="card-body" style="overflow-x:scroll;">
                 <table class="table table-striped" id="table1">

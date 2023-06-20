@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 use Barryvdh\DomPDF\Facade\Pdf as pp;
-
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\App;
 
 class StaffController extends Controller
 {
@@ -97,7 +98,7 @@ class StaffController extends Controller
             $count = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->count();
         } else if (isset($request->awal)  && !isset($request->akhir) && !isset($request->program_id)) {
             $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-            $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString()->count();
+            $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->count();
         } else if (!isset($request->awal)  && isset($request->akhir) && !isset($request->program_id)) {
             $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.created_at', '<', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
             $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.created_at', '<', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->count();
@@ -106,6 +107,39 @@ class StaffController extends Controller
             $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->count();
         }
         return view('staff/selesai/laporan', compact('data', 'program', 'count'));
+    }
+
+    public function exportPdf(Request $request)
+    {
+        if (isset($request->awal) && isset($request->akhir) && !isset($request->program_id)) {
+            $data['user'] = User::with(['program:id,nama'])->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->get();
+            $data['count'] = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->program_id) && !isset($request->awal) && !isset($request->akhir)) {
+            $data['user'] = User::with(['program:id,nama'])->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->get();
+            $data['count'] = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->awal) && isset($request->akhir) && isset($request->program_id)) {
+            $data['user'] = User::with(['program:id,nama'])->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->get();
+            $data['count'] = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->akhir) && !isset($request->awal)  && isset($request->program_id)) {
+            $data['user'] = User::with(['program:id,nama'])->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', '<=', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->get();
+            $data['count'] = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', '<=', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (!isset($request->akhir) && isset($request->awal)  && isset($request->program_id)) {
+            $data['user'] = User::with(['program:id,nama'])->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->get();
+            $data['count'] = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->awal)  && !isset($request->akhir) && !isset($request->program_id)) {
+            $data['user'] = User::with(['program:id,nama'])->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->get();
+            $data['count'] = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (!isset($request->awal)  && isset($request->akhir) && !isset($request->program_id)) {
+            $data['user'] = User::with(['program:id,nama'])->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.created_at', '<', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->get();
+            $data['count'] = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.created_at', '<', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else {
+            $data['user'] = User::with(['program:id,nama'])->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->get()->toArray();
+            $data['count'] = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->count();
+        }
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('pdf.exports', $data);
+        return $pdf->stream('export.pdf');
+
     }
 
     public function staff_cetak($surat)

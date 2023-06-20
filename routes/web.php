@@ -102,6 +102,7 @@ Route::group(['middleware'=>['auth','ceklevel:Pengaju,Staff,Kepala Desa,Desa']],
 	Route::get('pengajuan/permohonan-surat/cek-surat/cetak-pdf/{surat}/{id_pengajuan}',[StaffController::class,'cetak_surat'])->name('cetak_surat');
 	Route::get('pengajuan/permohonan-surat/staff/surat-selesai',[StaffController::class,'surat_selesai'])->name('surat_selesai');
 	Route::get('pengajuan/permohonan-surat/staff/laporan',[StaffController::class,'laporan'])->name('laporan');
+	Route::get('pengajuan/permohonan-surat/staff/laporan/export/pdf',[StaffController::class,'exportPdf'])->name('exportPdf');
 	Route::get('pengajuan/permohonan-surat/staff/laporan/print/{awal}/{akhir}',[StaffController::class,'print'])->name('print');
 
 // Kepala Desa

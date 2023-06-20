@@ -20,6 +20,10 @@
                     <button class="btn btn-sm btn-primary mt-2">Search</button>
                     <a href="<?php echo e(route('laporan')); ?>" class="btn btn-sm btn-info mt-2">Reset</a>
                     
+                    <a href="<?php echo e(route('exportPdf', ['awal' => $_GET['awal']?? '', 'akhir' => $_GET['akhir']?? '', 'program_id' => $_GET['program_id']?? ''])); ?>"
+                        class="btn btn-sm btn-success mt-2">Export PDF</a>
+                    
+                    
                 </form>
             </div>
         </div>
