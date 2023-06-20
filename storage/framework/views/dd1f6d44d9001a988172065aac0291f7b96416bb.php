@@ -6,11 +6,19 @@
             <div class="col-lg-5 pb-4" style="background: white;box-shadow:2px 2px grey;">
                 <form method="get">
                     <?php echo csrf_field(); ?>
-                    <label class="mt-4" for="">Tanggal Pengajuan</label>
-                    <input type="date" required="" class="form-control mt-1" name="awal">
+                    <label class="mt-4">Filter Berdasarkan Program</label>
+                    <select class="form-control" name="program_id">
+                        <option value="">-- Pilih Program --</option>
+                        <?php $__currentLoopData = $program; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($p->id); ?>"><?php echo e($p->nama); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                    <label class="mt-1" for="">Tanggal Pengajuan</label>
+                    <input type="date" class="form-control mt-1" name="awal">
                     <label for="">Batas Tanggal Pengajuan</label>
-                    <input type="date" required="" class="form-control mt-1" name="akhir">
+                    <input type="date" class="form-control mt-1" name="akhir">
                     <button class="btn btn-sm btn-primary mt-2">Search</button>
+                    <a href="<?php echo e(route('laporan')); ?>" class="btn btn-sm btn-info mt-2">Reset</a>
                     
                 </form>
             </div>
@@ -19,7 +27,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Laporan Surat Sudah Selesai
+                <?php echo e($count ?? 'Tidak ada'); ?> Laporan Surat Sudah Selesai
             </div>
             <div class="card-body" style="overflow-x:scroll;">
                 <table class="table table-striped" id="table1">
@@ -32,7 +40,6 @@
                             <th>Nama Lengkap</th>
                             <th>Status</th>
                             <th>Keterangan</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,9 +72,6 @@
                                             </span>
                                         <?php endif; ?>
                                     </td>
-                                    <td> <a href="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($dt->upload_berkas); ?>" target="_blank"
-                                            class="btn btn-sm btn-success rounded-pill"><i
-                                                class="icon dripicons-print"></i></a></td>
                                 </tr>
                                 <?php $no++; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

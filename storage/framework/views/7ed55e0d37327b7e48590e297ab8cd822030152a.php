@@ -69,7 +69,7 @@
             <script src="<?php echo e(asset('template/dist/assets/js/main.js')); ?>"></script>
             <script src="<?php echo e(asset('template/dist/assets/js/extensions/sweetalert2.js')); ?>"></script>
             <script src="<?php echo e(asset('template/dist/assets/vendors/sweetalert2/sweetalert2.all.min.js')); ?>"></script>
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <?php if(session('yes')): ?>
             <script type="text/javascript">
@@ -189,9 +189,10 @@
                         });
                       }
                   }
-              });     
+              });
 }
 </script>
 
 </html>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php /**PATH C:\xampp\htdocs\web-surat\resources\views/desa/login.blade.php ENDPATH**/ ?>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+<?php /**PATH C:\xampp\htdocs\web-surat\resources\views/desa/login.blade.php ENDPATH**/ ?>

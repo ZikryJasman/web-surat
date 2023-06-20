@@ -13,7 +13,7 @@
                             <option value="<?php echo e($p->id); ?>"><?php echo e($p->nama); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
-                    <label class="mt-2" for="">Berdasarkan Nama Mahasiswa</label>
+                    <label class="mt-2" for="">Berdasarkan Nama Pengaju</label>
                     <input type="text" class="form-control mt-1" name="search">
                     <button class="btn btn-sm btn-primary mt-2">Cari</button>
                 </form>
@@ -75,6 +75,9 @@
                                 </tr>
                                 <?php $no++; ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <tr class="no-data">
+                                <td class="text-center" colspan="14"><?php echo e($data->onEachSide(5)->links()); ?></td>
+                            </tr>
                         <?php else: ?>
                             <tr class="no-data">
                                 <td class="text-center" colspan="14">Tidak ada data</td>

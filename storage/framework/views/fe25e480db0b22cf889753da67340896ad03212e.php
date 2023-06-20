@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/css/bootstrap.css')); ?>">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/vendors/iconly/bold.css')); ?>">
@@ -33,15 +33,14 @@
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/css/app.css')); ?>">
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
 
     <script src="<?php echo e(asset('canva.js')); ?>"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://keith-wood.name/js/jquery.signature.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://keith-
-wood.name/css/jquery.signature.css">
+    <link rel="stylesheet" type="text/css" href="https://keith-wood.name/css/jquery.signature.css">
 
     <style>
         .kbw-signature {

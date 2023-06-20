@@ -26,9 +26,9 @@ class StaffController extends Controller
         $program = Program::all();
         if ($request->search) {
             $data = User::where('name', 'like', "%$request->search%")->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-        }else if ($request->program_id) {
+        } else if ($request->program_id) {
             $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-        }else if ($request->search && $request->program_id) {
+        } else if ($request->search && $request->program_id) {
             $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
         } else
             $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
@@ -69,21 +69,43 @@ class StaffController extends Controller
         $program = Program::all();
         if ($request->search) {
             $data = User::where('name', 'like', "%$request->search%")->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-        }else if ($request->program_id) {
+        } else if ($request->program_id) {
             $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-        }else if ($request->search && $request->program_id) {
+        } else if ($request->search && $request->program_id) {
             $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
         } else
-        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-        return view('staff/selesai/index', compact('data','program'));
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+        return view('staff/selesai/index', compact('data', 'program'));
     }
     public function laporan(Request $request)
     {
-        if ($request->awal && $request->akhir)
+        $program = Program::all();
+        if (isset($request->awal) && isset($request->akhir) && !isset($request->program_id)) {
             $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-        else
+            $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->program_id) && !isset($request->awal) && !isset($request->akhir)) {
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $count = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->awal) && isset($request->akhir) && isset($request->program_id)) {
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $count = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereBetween('pengajuan.tgl_req', [$request->awal, $request->akhir])->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->akhir) && !isset($request->awal)  && isset($request->program_id)) {
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', '<=', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $count = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', '<=', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (!isset($request->akhir) && isset($request->awal)  && isset($request->program_id)) {
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $count = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else if (isset($request->awal)  && !isset($request->akhir) && !isset($request->program_id)) {
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.tgl_req', $request->awal)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString()->count();
+        } else if (!isset($request->awal)  && isset($request->akhir) && !isset($request->program_id)) {
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.created_at', '<', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->whereDate('pengajuan.created_at', '<', $request->akhir)->orderByDesc('pengajuan.id_pengajuan')->count();
+        } else {
             $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
-        return view('staff/selesai/laporan', compact('data'));
+            $count = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('pengajuan.selesai', '=', 'Surat Selesai')->count();
+        }
+        return view('staff/selesai/laporan', compact('data', 'program', 'count'));
     }
 
     public function staff_cetak($surat)

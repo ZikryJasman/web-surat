@@ -74,14 +74,14 @@
                                     <div class="col-lg-6">
                                         <label>NIM:</label>
                                         <div class="form-group">
-                                            <input type="number" name="nim" value="{{ $cst->nim }}"
+                                            <input type="text" name="nim" value="{{ $cst->nim }}"
                                                 class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <label>TAHUN AJARAN:</label>
                                         <div class="form-group">
-                                            <input type="number" name="tahun_ajaran" value="{{ $cst->tahun_ajaran }}"
+                                            <input type="text" name="tahun_ajaran" value="{{ $cst->tahun_ajaran }}"
                                                 class="form-control">
                                         </div>
                                     </div>

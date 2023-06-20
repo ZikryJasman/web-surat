@@ -33,7 +33,7 @@
                                 <th>No. </th>
                                 <th>Nama Pengurus</th>
                                 <th>Email</th>
-                                <th>Nim</th>
+                                <th>Nik</th>
                                 <th>Level</th>
                                 <th>Action</th>
                             </tr>

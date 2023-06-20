@@ -60,16 +60,9 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <label>NIM:</label>
+                            <label>NIK:</label>
                             <div class="form-group">
                                 <input type="number" required name="nim" value=""
-                                class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label>TAHUN AJARAN:</label>
-                            <div class="form-group">
-                                <input type="number" required name="tahun_ajaran" value=""
                                 class="form-control">
                             </div>
                         </div>
