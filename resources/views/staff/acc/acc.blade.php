@@ -62,7 +62,12 @@
                                         @if ($dt->selesai == null)
                                             Menunggu Konfirmasi
                                         @endif
-                                        @if ($dt->selesai !== null)
+                                        @if ($dt->selesai !== null && $dt->selesai == 'Lengkapi data')
+                                            <span class="badge bg-danger">
+                                                {{ $dt->selesai }}
+                                            </span>
+                                        @endif
+                                        @if ($dt->selesai !== null && $dt->selesai != 'Lengkapi data')
                                             <span class="badge bg-success">
                                                 {{ $dt->selesai }}
                                             </span>

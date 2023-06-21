@@ -26,7 +26,7 @@
                             @foreach ($data as $dt)
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td>{{ parseDateIdFull($dt->tgl_req) .' WIB'}}</td>
+                                    <td>{{ parseDateIdFull($dt->tgl_req) . ' WIB' }}</td>
                                     <td>{{ $dt->nama_surat }}</td>
                                     <td>
                                         @if ($dt->status_pengajuan == 'Pengecekan Permohonan')
@@ -41,7 +41,12 @@
                                         @if ($dt->selesai == null)
                                             Menunggu Konfirmasi
                                         @endif
-                                        @if ($dt->selesai !== null)
+                                        @if ($dt->selesai !== null && $dt->selesai == 'Lengkapi data')
+                                            <span class="badge bg-danger">
+                                                {{ $dt->selesai }}
+                                            </span>
+                                        @endif
+                                        @if ($dt->selesai !== null && $dt->selesai != 'Lengkapi data')
                                             <span class="badge bg-success">
                                                 {{ $dt->selesai }}
                                             </span>
@@ -52,9 +57,14 @@
                                             data-bs-target="#detail{{ $dt->id_pengajuan }}"
                                             class="btn btn-sm btn-primary rounded-pill"><i
                                                 class="icon dripicons-document"></i></a>
-                                        @if ($dt->selesai == 'Surat Selesai')
-                                            <a href="{{asset('pengajuan_berkas')}}/{{$dt->upload_berkas}}" target="_blank"
+                                        @if ($dt->selesai !== null && $dt->selesai == 'Lengkapi data')
+                                            <a href="{{ route('updateRequest', ['surat' => $dt->singkatan, 'idPengajuan' => $dt->id_pengajuan]) }}"
                                                 class="btn btn-sm btn-success rounded-pill"><i
+                                                    class="icon dripicons-document-edit"></i></a>
+                                        @endif
+                                        @if ($dt->selesai == 'Surat Selesai')
+                                            <a href="{{ asset('pengajuan_berkas') }}/{{ $dt->upload_berkas }}"
+                                                target="_blank" class="btn btn-sm btn-success rounded-pill"><i
                                                     class="icon dripicons-print"></i></a>
                                         @endif
                                     </td>

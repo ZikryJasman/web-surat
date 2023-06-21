@@ -29,9 +29,9 @@
                                                             Lengkap</option>
                                                     </select>
                                                     <label for="first-name-vertical" style="padding-top: .5rem">Upload
-                                                        Berkas Word</label>
+                                                        Berkas Word (<span style="font-size: 12px">input jika berkas sudah lengkap</span>)</label>
                                                     <div class="form-group position-relative">
-                                                        <input required type="file" name="upload_berkas"
+                                                        <input type="file" name="upload_berkas"
                                                             id="upload_berkas" class="form-control">
                                                     </div>
                                                     <button class="btn btn-sm btn-outline-primary rounded-pill mt-3"> <i

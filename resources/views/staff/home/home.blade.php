@@ -10,6 +10,7 @@
                 $jml=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.selesai','Sudah di Konfirmasi')->count();
                 $jml2=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.selesai','Surat Selesai')->count();
                 $jml3=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.status_pengajuan','Pengecekan Permohonan')->count();
+                $jml4=DB::table('surat')->join('pengajuan','pengajuan.surat_id','=','surat.id_surat')->where('id_surat',$dt->id_surat)->where('pengajuan.status_pengajuan','Data Belum Lengkap')->where('pengajuan.selesai','Lengkapi data')->count();
                 ?>
                 <div class="col-sm-6 col-lg-3">
                     <div class="card">
@@ -27,6 +28,8 @@
                                     <h6 class="font-extrabold mb-0">{{$jml2 .' Selesai'}}</h6>
                                     <hr>
                                     <h6 class="font-extrabold mb-0">{{$jml3 .' Menunggu Staff'}}</h6>
+                                    <hr>
+                                    <h6 class="font-extrabold mb-0">{{$jml4 .' Ajukan Ulang'}}</h6>
                                 </div>
                             </div>
                         </div>

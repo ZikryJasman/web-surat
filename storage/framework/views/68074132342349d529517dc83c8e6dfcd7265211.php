@@ -24,7 +24,7 @@
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <th><?= $no ?>. </th>
-                                    <td><?php echo e(parseDateIdFull($dt->tgl_req) .' WIB'); ?></td>
+                                    <td><?php echo e(parseDateIdFull($dt->tgl_req) . ' WIB'); ?></td>
                                     <td><?php echo e($dt->nama_surat); ?></td>
                                     <td>
                                         <?php if($dt->status_pengajuan == 'Pengecekan Permohonan'): ?>
@@ -39,7 +39,13 @@
                                         <?php if($dt->selesai == null): ?>
                                             Menunggu Konfirmasi
                                         <?php endif; ?>
-                                        <?php if($dt->selesai !== null): ?>
+                                        <?php if($dt->selesai !== null && $dt->selesai == 'Lengkapi data'): ?>
+                                            <span class="badge bg-danger">
+                                                <?php echo e($dt->selesai); ?>
+
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php if($dt->selesai !== null && $dt->selesai != 'Lengkapi data'): ?>
                                             <span class="badge bg-success">
                                                 <?php echo e($dt->selesai); ?>
 
@@ -51,9 +57,14 @@
                                             data-bs-target="#detail<?php echo e($dt->id_pengajuan); ?>"
                                             class="btn btn-sm btn-primary rounded-pill"><i
                                                 class="icon dripicons-document"></i></a>
-                                        <?php if($dt->selesai == 'Surat Selesai'): ?>
-                                            <a href="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($dt->upload_berkas); ?>" target="_blank"
+                                        <?php if($dt->selesai !== null && $dt->selesai == 'Lengkapi data'): ?>
+                                            <a href="<?php echo e(route('updateRequest', ['surat' => $dt->singkatan, 'idPengajuan' => $dt->id_pengajuan])); ?>"
                                                 class="btn btn-sm btn-success rounded-pill"><i
+                                                    class="icon dripicons-document-edit"></i></a>
+                                        <?php endif; ?>
+                                        <?php if($dt->selesai == 'Surat Selesai'): ?>
+                                            <a href="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($dt->upload_berkas); ?>"
+                                                target="_blank" class="btn btn-sm btn-success rounded-pill"><i
                                                     class="icon dripicons-print"></i></a>
                                         <?php endif; ?>
                                     </td>

@@ -26,34 +26,47 @@ class StaffController extends Controller
     {
         $program = Program::all();
         if ($request->search) {
-            $data = User::where('name', 'like', "%$request->search%")->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $data = User::where('name', 'like', "%$request->search%")->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
         } else if ($request->program_id) {
-            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $data = User::where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
         } else if ($request->search && $request->program_id) {
-            $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
         } else
-            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
         return view('staff/acc/acc', compact('data', 'program'));
     }
     public function staff_cek_berkas($surat, $id_pengajuan)
     {
-        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->where('pengajuan.selesai', '=', NULL)->get();
-        $berkas = DB::table('berkas_pengajuan')->join('pengajuan', 'pengajuan.id_pengajuan', '=', 'berkas_pengajuan.pengajuan_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->where('pengajuan.selesai', '=', NULL)->get();
+        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->get();
+        $berkas = DB::table('berkas_pengajuan')->join('pengajuan', 'pengajuan.id_pengajuan', '=', 'berkas_pengajuan.pengajuan_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->get();
         return view('staff/acc/cek', compact('data', 'berkas'));
     }
     public function keterangan(Request $request, $id_pengajuan)
     {
-        $files = $request->file('upload_berkas');
-        $foto = $files->getClientOriginalName();
-        $namaFileBaru = uniqid();
-        $namaFileBaru .= $foto;
-        // $pengajuan->upload_berkas = $namaFileBaru;
-        // $pengajuan->path_upload = $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru);
-        DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
-            'status_pengajuan' => $request->keterangan,
-            'upload_berkas' => $namaFileBaru,
-            'path_upload' => $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru)
-        ]);
+        if ($request->file) {
+            $files = $request->file('upload_berkas');
+            $foto = $files->getClientOriginalName();
+            $namaFileBaru = uniqid();
+            $namaFileBaru .= $foto;
+            // $pengajuan->upload_berkas = $namaFileBaru;
+            // $pengajuan->path_upload = $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru);
+            DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
+                'status_pengajuan' => $request->keterangan,
+                'upload_berkas' => $namaFileBaru,
+                'path_upload' => $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru)
+            ]);
+        } else {
+            if ($request->keterangan == 'Data Belum Lengkap') {
+                DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
+                    'status_pengajuan' => $request->keterangan,
+                    'selesai' => 'Lengkapi data',
+                ]);
+            } else {
+                DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
+                    'status_pengajuan' => $request->keterangan,
+                ]);
+            }
+        }
         return redirect()->back()->with('up', '-');
     }
     public function konfirmasi($singkatan, $id_pengajuan)
@@ -139,7 +152,6 @@ class StaffController extends Controller
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('pdf.exports', $data);
         return $pdf->stream('export.pdf');
-
     }
 
     public function staff_cetak($surat)

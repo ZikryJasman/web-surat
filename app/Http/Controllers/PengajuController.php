@@ -30,6 +30,12 @@ class PengajuController extends Controller
         $surat = Surat::where('nama_surat', $surat)->first();
         return view('pengaju/request/index', compact('data', 'surat'));
     }
+    public function updateRequest($surat, $idPengajuan)
+    {
+        $data = User::join('info_lengkap', 'info_lengkap.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->join('pengajuan', 'pengajuan.user_id', '=', 'users.id')->where('users.id', Auth::user()->id)->where('id_pengajuan', $idPengajuan)->get();
+        $surat = Surat::where('id_surat', $data[0]->surat_id)->first();
+        return view('pengaju/data/update', compact('data', 'surat'));
+    }
     public function add_request(Request $request)
     {
         $bulan = date('m');
@@ -58,10 +64,20 @@ class PengajuController extends Controller
         } elseif ($bulan == '12') {
             $bulan = 'XI';
         }
-        $pengajuan = new Pengajuan();
+        $pengajuan = null;
+        if ($request->id_pengajuan) {
+            $pengajuan = Pengajuan::where('id_pengajuan', $request->id_pengajuan)->firstOrFail();
+        } else {
+            $pengajuan = new Pengajuan();
+        }
         $pengajuan->user_id = Auth::user()->id;
         $pengajuan->surat_id = $request->id_surat;
-        $pengajuan->status_pengajuan = 'Pengecekan Permohonan';
+        if ($request->id_pengajuan) {
+            $pengajuan->status_pengajuan = 'Pengajuan Ulang';
+            $pengajuan->selesai = null;
+        }else{
+            $pengajuan->status_pengajuan = 'Pengecekan Permohonan';
+        }
         $pengajuan->tgl_req = now();
         $pengajuan->keperluan = $request->keperluan;
         $pengajuan->nomor_surat = $bulan . '-' . date('d-Y');

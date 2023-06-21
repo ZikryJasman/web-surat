@@ -13,7 +13,7 @@
                             <option value="<?php echo e($p->id); ?>"><?php echo e($p->nama); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
-                    <label class="mt-2" for="">Berdasarkan Nama Mahasiswa</label>
+                    <label class="mt-2" for="">Berdasarkan Nama Pengaju</label>
                     <input type="text" class="form-control mt-1" name="search">
                     <button class="btn btn-sm btn-primary mt-2">Cari</button>
                 </form>
@@ -60,7 +60,13 @@
                                         <?php if($dt->selesai == null): ?>
                                             Menunggu Konfirmasi
                                         <?php endif; ?>
-                                        <?php if($dt->selesai !== null): ?>
+                                        <?php if($dt->selesai !== null && $dt->selesai == 'Lengkapi data'): ?>
+                                            <span class="badge bg-danger">
+                                                <?php echo e($dt->selesai); ?>
+
+                                            </span>
+                                        <?php endif; ?>
+                                        <?php if($dt->selesai !== null && $dt->selesai != 'Lengkapi data'): ?>
                                             <span class="badge bg-success">
                                                 <?php echo e($dt->selesai); ?>
 

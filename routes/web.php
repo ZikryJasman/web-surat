@@ -88,6 +88,7 @@ Route::group(['middleware'=>['auth','ceklevel:Pengaju,Staff,Kepala Desa,Desa']],
 // Pengaju
 	Route::get('pengajuan/dashboard/request-permohonan/{surat}',[PengajuController::class,'request'])->name('request');
 	Route::post('pengajuan/dashboard/request-permohonan/add-permohonan',[PengajuController::class,'add_request'])->name('add_request');
+	Route::get('pengajuan/dashboard/data-status-permohonan/{surat}/update/{idPengajuan}',[PengajuController::class,'updateRequest'])->name('updateRequest');
 	Route::get('pengajuan/dashboard/data-status-permohonan/{singkatan}',[PengajuController::class,'data_request'])->name('data_request');
 	Route::get('pengajuan/detail-profile',[PengajuController::class,'profil_pengaju'])->name('profil_pengaju');
 
