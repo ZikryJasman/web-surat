@@ -202,7 +202,7 @@ class DesaController extends Controller
             // $namaFileBaru .= $name;
             // $ambil->move(\base_path() . "/public/profil", $namaFileBaru);
             if($request->file('foto')){
-                $namaFileBaru = uploadFoto($request->image, 'admin/' . Auth::user()->id, true);
+                $namaFileBaru = uploadFoto($request->foto, 'admin/' . Auth::user()->id, true);
             }
             $user = new User();
             $user->name = $request->name;
