@@ -34,7 +34,8 @@ class KepalaDesaController extends Controller
 	public function ttd($surat,$id_pengajuan)
 	{
 		$data=User::join('info_lengkap','users.id','=','info_lengkap.user_id')->join('pengajuan','pengajuan.user_id','=','info_lengkap.user_id')->join('surat','surat.id_surat','=','pengajuan.surat_id')->join('template','template.id_template','=','surat.template_id')->where('surat.singkatan',$surat)->where('pengajuan.id_pengajuan',$id_pengajuan)->get();
-		$desa=User::join('biodata_desa','biodata_desa.user_id','=','users.id')->join('indonesia_provinces','indonesia_provinces.code','=','biodata_desa.province_codes')->join('indonesia_cities','indonesia_cities.code','=','biodata_desa.city_codes')->join('indonesia_districts','indonesia_districts.code','=','biodata_desa.district_codes')->join('indonesia_villages','indonesia_villages.code','=','biodata_desa.village_codes')->join('profil_desa','profil_desa.user_id','biodata_desa.user_id')->where('users.level','Desa')->get();
+		dd($data);
+        $desa=User::join('biodata_desa','biodata_desa.user_id','=','users.id')->join('indonesia_provinces','indonesia_provinces.code','=','biodata_desa.province_codes')->join('indonesia_cities','indonesia_cities.code','=','biodata_desa.city_codes')->join('indonesia_districts','indonesia_districts.code','=','biodata_desa.district_codes')->join('indonesia_villages','indonesia_villages.code','=','biodata_desa.village_codes')->join('profil_desa','profil_desa.user_id','biodata_desa.user_id')->where('users.level','Desa')->get();
 		return view('kepaladesa/acc/ttd',compact('data','desa'));
 	}
 	public function ttd_upload(Request $request,$id_pengajuan)
