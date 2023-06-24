@@ -30,6 +30,7 @@
                                                         } ?> value="Data Belum Lengkap">Data Belum
                                                             Lengkap</option>
                                                     </select>
+                                                    <input type="hidden" value="{{$dt->singkatan}}" name="singkatan">
                                                     <label for="first-name-vertical" style="padding-top: .5rem">Upload
                                                         Berkas Word (<span style="font-size: 12px">input jika berkas sudah lengkap</span>)</label>
                                                     <div class="form-group position-relative">
@@ -181,7 +182,7 @@
                             <div class="form-body">
                                 @foreach ($berkas as $brk)
                                     <div class="row mt-2">
-                                        <img src="{{ asset('pengajuan_berkas') }}/{{ $brk->data_berkas }}"
+                                        <img src="{{ $brk->data_berkas }}"
                                             class="img-thumbnail">
                                     </div>
                                 @endforeach

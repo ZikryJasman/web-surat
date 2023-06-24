@@ -70,7 +70,7 @@
                                             </span>
                                         @endif
                                     </td>
-                                    <td> <a href="{{ asset('pengajuan_berkas') }}/{{ $dt->upload_berkas }}" target="_blank"
+                                    <td> <a href="{{ $dt->upload_berkas }}" target="_blank"
                                             class="btn btn-sm btn-success rounded-pill"><i
                                                 class="icon dripicons-print"></i></a></td>
                                 </tr>

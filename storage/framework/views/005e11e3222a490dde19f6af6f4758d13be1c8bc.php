@@ -69,7 +69,7 @@
                                             </span>
                                         <?php endif; ?>
                                     </td>
-                                    <td> <a href="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($dt->upload_berkas); ?>" target="_blank"
+                                    <td> <a href="<?php echo e($dt->upload_berkas); ?>" target="_blank"
                                             class="btn btn-sm btn-success rounded-pill"><i
                                                 class="icon dripicons-print"></i></a></td>
                                 </tr>

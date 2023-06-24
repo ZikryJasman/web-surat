@@ -159,11 +159,12 @@ class DesaController extends Controller
     public function lengkapi(Request $request, $id)
     {
         if ($request->hasFile('foto')) {
-            $ambil = $request->file('foto');
-            $name = $ambil->getClientOriginalName();
-            $namaFileBaru = uniqid();
-            $namaFileBaru .= $name;
-            $ambil->move(\base_path() . "/public/foto", $namaFileBaru);
+            $namaFileBaru = uploadFoto($request->image, 'admin/' . Auth::user()->id, true);
+            // $ambil = $request->file('foto');
+            // $name = $ambil->getClientOriginalName();
+            // $namaFileBaru = uniqid();
+            // $namaFileBaru .= $name;
+            // $ambil->move(\base_path() . "/public/foto", $namaFileBaru);
             DB::table('profil_desa')->where('user_id', $id)->update([
                 'lokasi_desa' => $request->lokasi_desa,
                 'telepon_desa' => $request->telepon_desa,
@@ -195,12 +196,14 @@ class DesaController extends Controller
     {
         $cek = User::where('email', $request->email)->first();
         if ($cek == NULL) {
-            $ambil = $request->file('foto');
-            $name = $ambil->getClientOriginalName();
-            $namaFileBaru = uniqid();
-            $namaFileBaru .= $name;
-            $ambil->move(\base_path() . "/public/profil", $namaFileBaru);
-
+            // $ambil = $request->file('foto');
+            // $name = $ambil->getClientOriginalName();
+            // $namaFileBaru = uniqid();
+            // $namaFileBaru .= $name;
+            // $ambil->move(\base_path() . "/public/profil", $namaFileBaru);
+            if($request->file('foto')){
+                $namaFileBaru = uploadFoto($request->image, 'admin/' . Auth::user()->id, true);
+            }
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;

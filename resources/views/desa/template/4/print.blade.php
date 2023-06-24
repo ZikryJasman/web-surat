@@ -21,7 +21,7 @@
             <div class="col-xl-12">
                 @foreach($desa as $ds)
                 <center>
-                    <img src="{{asset('foto')}}/{{$ds->logo}}" alt="avatar" class="img pt-2" width="65" style="float: left;">
+                    <img src="{{$ds->logo}}" alt="avatar" class="img pt-2" width="65" style="float: left;">
                     PEMERINTAHAN {{$ds->name_city}} <br>
                     KECAMATAN {{$ds->name_district}}
                     <h4>KELURAHAN {{$ds->name_village}}</h4>

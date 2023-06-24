@@ -57,7 +57,7 @@
                                 <td>LOGO</td>
                                 <td>:</td>
                                 <td>
-                                    <img src="{{asset('foto')}}/{{$cst->logo}}" width="70">
+                                    <img src="{{$cst->logo}}" width="70">
                                 </td>
                             </tr>
                             @include('desa/profildesa/ganti')

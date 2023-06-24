@@ -6,7 +6,7 @@
         <div class="col-lg-8">
             @foreach($desa as $ds)
             <center>
-                <img src="{{asset('foto')}}/{{$ds->logo}}" alt="avatar" class="img pt-3" width="50" style="float: left;">
+                <img src="{{$ds->logo}}" alt="avatar" class="img pt-3" width="50" style="float: left;">
                 PEMERINTAHAN {{$ds->name_city}} <br>
                 KECAMATAN {{$ds->name_district}}
                 <h4>KELURAHAN {{$ds->name_village}}</h4>

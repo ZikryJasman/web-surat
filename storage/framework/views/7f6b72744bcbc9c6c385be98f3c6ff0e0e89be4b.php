@@ -75,7 +75,7 @@
                     <?php $__currentLoopData = $pelengkap; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $br): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if($br->pengajuan_id == $dt->id_pengajuan): ?>
                             <div class="col-lg-2">
-                                <img src="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($br->data_berkas); ?>" width="50">
+                                <img src="<?php echo e($br->data_berkas); ?>" width="50">
                             </div>
                         <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

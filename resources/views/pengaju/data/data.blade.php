@@ -63,7 +63,7 @@
                                                     class="icon dripicons-document-edit"></i></a>
                                         @endif
                                         @if ($dt->selesai == 'Surat Selesai')
-                                            <a href="{{ asset('pengajuan_berkas') }}/{{ $dt->upload_berkas }}"
+                                            <a href="{{ $dt->upload_berkas }}"
                                                 target="_blank" class="btn btn-sm btn-success rounded-pill"><i
                                                     class="icon dripicons-print"></i></a>
                                         @endif

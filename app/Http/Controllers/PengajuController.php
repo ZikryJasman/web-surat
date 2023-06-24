@@ -75,7 +75,7 @@ class PengajuController extends Controller
         if ($request->id_pengajuan) {
             $pengajuan->status_pengajuan = 'Pengajuan Ulang';
             $pengajuan->selesai = null;
-        }else{
+        } else {
             $pengajuan->status_pengajuan = 'Pengecekan Permohonan';
         }
         $pengajuan->tgl_req = now();
@@ -85,13 +85,11 @@ class PengajuController extends Controller
 
         $files = $request->file('berkas');
         foreach ($files as $file) {
-            $foto = $file->getClientOriginalName();
-            $namaFileBaru = uniqid();
-            $namaFileBaru .= $foto;
+            $namaFileBaru = uploadFoto($file, 'admin/' . Auth::user()->id, true);
             DB::table('berkas_pengajuan')->insert([
                 'pengajuan_id' => $pengajuan->id_pengajuan,
                 'data_berkas' => $namaFileBaru,
-                'path' => $file->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru),
+                'path' => $namaFileBaru,
             ]);
         }
         return redirect(route('data_request', $request->singkatan))->with('add', '-');
@@ -112,11 +110,12 @@ class PengajuController extends Controller
     public function update_profil_pengurus(Request $request)
     {
         if ($request->hasFile('foto')) {
-            $ambil = $request->file('foto');
-            $name = $ambil->getClientOriginalName();
-            $namaFileBaru = uniqid();
-            $namaFileBaru .= $name;
-            $ambil->move(\base_path() . "/public/profil", $namaFileBaru);
+            // $ambil = $request->file('foto');
+            // $name = $ambil->getClientOriginalName();
+            // $namaFileBaru = uniqid();
+            // $namaFileBaru .= $name;
+            // $ambil->move(\base_path() . "/public/profil", $namaFileBaru);
+            $namaFileBaru = uploadFoto($request->file('foto'), 'admin/' . Auth::user()->id, true);
 
             User::where('id', Auth::user()->id)->update([
                 'name' => $request->name,

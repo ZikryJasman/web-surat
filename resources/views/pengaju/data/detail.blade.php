@@ -68,7 +68,7 @@
                     @foreach ($pelengkap as $br)
                         @if ($br->pengajuan_id == $dt->id_pengajuan)
                             <div class="col-lg-2">
-                                <img src="{{ asset('pengajuan_berkas') }}/{{ $br->data_berkas }}" width="50">
+                                <img src="{{ $br->data_berkas }}" width="50">
                             </div>
                         @endif
                     @endforeach

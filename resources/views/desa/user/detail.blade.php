@@ -83,7 +83,7 @@
                                     @if ($cst->level !== 'Desa' && empty($cst->foto_profil))
                                         Tidak ada gambar
                                     @else
-                                        <img src="{{ asset('profil') }}/{{ $cst->foto_profil }}" width="70">
+                                        <img src="{{ $cst->foto_profil }}" width="70">
                                     @endif
                                 </td>
                             </tr>

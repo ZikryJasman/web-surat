@@ -44,16 +44,18 @@ class StaffController extends Controller
     public function keterangan(Request $request, $id_pengajuan)
     {
         if ($request->file) {
-            $files = $request->file('upload_berkas');
-            $foto = $files->getClientOriginalName();
-            $namaFileBaru = uniqid();
-            $namaFileBaru .= $foto;
+            // $files = $request->file('upload_berkas');
+            // $foto = $files->getClientOriginalName();
+            // $namaFileBaru = uniqid();
+            // $namaFileBaru .= $foto;
+            $namaFileBaru = uploadFoto($request->file, 'admin/' . Auth::user()->id, true);
+
             // $pengajuan->upload_berkas = $namaFileBaru;
             // $pengajuan->path_upload = $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru);
             DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
                 'status_pengajuan' => $request->keterangan,
                 'upload_berkas' => $namaFileBaru,
-                'path_upload' => $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru)
+                'path_upload' => $namaFileBaru
             ]);
         } else {
             if ($request->keterangan == 'Data Belum Lengkap') {
@@ -61,6 +63,7 @@ class StaffController extends Controller
                     'status_pengajuan' => $request->keterangan,
                     'selesai' => 'Lengkapi data',
                 ]);
+                return redirect(route('staff_acc', $request->singkatan))->with('up', '-');
             } else {
                 DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
                     'status_pengajuan' => $request->keterangan,

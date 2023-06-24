@@ -28,6 +28,7 @@
                                                         } ?> value="Data Belum Lengkap">Data Belum
                                                             Lengkap</option>
                                                     </select>
+                                                    <input type="hidden" value="<?php echo e($dt->singkatan); ?>" name="singkatan">
                                                     <label for="first-name-vertical" style="padding-top: .5rem">Upload
                                                         Berkas Word (<span style="font-size: 12px">input jika berkas sudah lengkap</span>)</label>
                                                     <div class="form-group position-relative">
@@ -175,7 +176,7 @@
                             <div class="form-body">
                                 <?php $__currentLoopData = $berkas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="row mt-2">
-                                        <img src="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($brk->data_berkas); ?>"
+                                        <img src="<?php echo e($brk->data_berkas); ?>"
                                             class="img-thumbnail">
                                     </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
