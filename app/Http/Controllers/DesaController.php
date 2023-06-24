@@ -159,7 +159,7 @@ class DesaController extends Controller
     public function lengkapi(Request $request, $id)
     {
         if ($request->hasFile('foto')) {
-            $namaFileBaru = uploadFoto($request->image, 'admin/' . Auth::user()->id, true);
+            $namaFileBaru = uploadFoto($request->foto, 'admin/' . Auth::user()->id, true);
             // $ambil = $request->file('foto');
             // $name = $ambil->getClientOriginalName();
             // $namaFileBaru = uniqid();

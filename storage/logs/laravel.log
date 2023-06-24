@@ -21707,3 +21707,43 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2023-06-24 06:28:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:29:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:30:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:31:04] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:32:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:33:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:34:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:35:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:36:03] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2023-06-24 06:37:04] local.ERROR: Cannot redeclare unionPaginate() (previously declared in C:\xampp\htdocs\web-surat\app\Helpers.php:10) {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare unionPaginate() (previously declared in C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10) at C:\\xampp\\htdocs\\web-surat\\app\\Helpers.php:10)
+[stacktrace]
+#0 {main}
+"} 
