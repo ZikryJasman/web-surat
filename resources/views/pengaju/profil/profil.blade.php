@@ -90,7 +90,8 @@
                                              @if (empty($cst->foto_profil))
                                                  Tidak ada gambar
                                              @else
-                                                 <img src="{{ $cst->foto_profil }}" width="70">
+                                                 <img src="{{ 'https://indonesiasehat.org/web-surat/public/' . $cst->foto_profil }}"
+                                                     width="70">
                                              @endif
                                          </td>
                                      </tr>

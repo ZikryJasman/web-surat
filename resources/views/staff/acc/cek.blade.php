@@ -30,12 +30,13 @@
                                                         } ?> value="Data Belum Lengkap">Data Belum
                                                             Lengkap</option>
                                                     </select>
-                                                    <input type="hidden" value="{{$dt->singkatan}}" name="singkatan">
+                                                    <input type="hidden" value="{{ $dt->singkatan }}" name="singkatan">
                                                     <label for="first-name-vertical" style="padding-top: .5rem">Upload
-                                                        Berkas Word (<span style="font-size: 12px">input jika berkas sudah lengkap</span>)</label>
+                                                        Berkas Word (<span style="font-size: 12px">input jika berkas sudah
+                                                            lengkap</span>)</label>
                                                     <div class="form-group position-relative">
-                                                        <input type="file" name="upload_berkas"
-                                                            id="upload_berkas" class="form-control">
+                                                        <input type="file" name="upload_berkas" id="upload_berkas"
+                                                            class="form-control">
                                                     </div>
                                                     <button class="btn btn-sm btn-outline-primary rounded-pill mt-3"> <i
                                                             class="icon dripicons-document-edit"></i> Ubah</button>
@@ -182,7 +183,7 @@
                             <div class="form-body">
                                 @foreach ($berkas as $brk)
                                     <div class="row mt-2">
-                                        <img src="{{ $brk->data_berkas }}"
+                                        <img src="{{ 'https://indonesiasehat.org/web-surat/public/' . $brk->data_berkas }}"
                                             class="img-thumbnail">
                                     </div>
                                 @endforeach

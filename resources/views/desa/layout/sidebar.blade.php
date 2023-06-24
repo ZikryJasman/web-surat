@@ -38,7 +38,8 @@
                                         src="{{ asset('template/dist/assets/images/faces/1.jpg') }}" alt="Face 1"></a>
                             @else
                                 <a href="{{ route('profil_pengaju') }}"><img
-                                        src="{{ $usp->foto_profil }}" alt="Face 1"></a>
+                                        src="{{ 'https://indonesiasehat.org/web-surat/public/' . $usp->foto_profil }}"
+                                        alt="Face 1"></a>
                             @endif
                         @endforeach
                     @endif
