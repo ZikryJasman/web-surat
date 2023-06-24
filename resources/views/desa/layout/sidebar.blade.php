@@ -28,7 +28,8 @@
                                         src="{{ asset('template/dist/assets/images/faces/1.jpg') }}" alt="Face 1"></a>
                             @else
                                 <a href="{{ route('profil_desa', Auth::user()->title_user) }}"><img
-                                        src="{{ $dpf->logo }}" alt="Face 1"></a>
+                                        src="{{ 'https://indonesiasehat.org/web-surat/public/' . $dpf->logo }}"
+                                        alt="Face 1"></a>
                             @endif
                         @endforeach
                     @else

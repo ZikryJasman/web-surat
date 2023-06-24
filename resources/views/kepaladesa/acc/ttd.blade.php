@@ -14,8 +14,9 @@
                     </form>
                 </div>
                 <div class="col-lg-7">
-            <a href="{{ $dt->upload_berkas }}" class="btn btn-sm form-control btn-success mt-2">Lihat Surat</a>
-        </div>
+                    <a href="{{ 'https://indonesiasehat.org/web-surat/public/' . $dt->upload_berkas }}"
+                        class="btn btn-sm form-control btn-success mt-2">Lihat Surat</a>
+                </div>
             </div>
         @endforeach
     </div>

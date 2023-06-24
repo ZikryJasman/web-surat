@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold"><a href="">{{$dt->singkatan}}</a></h6>
-                                    <h6 class="font-extrabold mb-0">{{$jml .' Menunggu Approve'}}</h6>
+                                    <h6 class="font-extrabold mb-0">{{$jml .' Menunggu Approve Wakil Dekan'}}</h6>
                                     <hr>
                                     <h6 class="font-extrabold mb-0">{{$jml2 .' Selesai'}}</h6>
                                     <hr>
