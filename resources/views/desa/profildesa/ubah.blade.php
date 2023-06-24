@@ -24,7 +24,7 @@
                         <div class="col-lg-6">
                             <label>PONSEL:</label>
                             <div class="form-group">
-                                <input type="number" name="telepon_desa" value="{{$cst->telepon_desa}}" 
+                                <input type="number" name="telepon_desa" value="{{$cst->telepon_desa}}"
                                 class="form-control">
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="col-xl-12">
-                            <label>LOKASI DESA: </label>
+                            <label>Alamat: </label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="4" name="lokasi_desa">{{$cst->lokasi_desa}}</textarea>
                             </div>

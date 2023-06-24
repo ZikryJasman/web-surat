@@ -24,7 +24,7 @@
                         <div class="col-lg-6">
                             <label>PONSEL:</label>
                             <div class="form-group">
-                                <input type="number" name="telepon_desa" value="<?php echo e($cst->telepon_desa); ?>" 
+                                <input type="number" name="telepon_desa" value="<?php echo e($cst->telepon_desa); ?>"
                                 class="form-control">
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="col-xl-12">
-                            <label>LOKASI DESA: </label>
+                            <label>Alamat: </label>
                             <div class="form-group">
                                 <textarea class="form-control" rows="4" name="lokasi_desa"><?php echo e($cst->lokasi_desa); ?></textarea>
                             </div>
@@ -57,4 +57,5 @@
         </form>
     </div>
 </div>
-</div><?php /**PATH C:\xampp\htdocs\web-surat\resources\views/desa/profildesa/ubah.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH C:\xampp\htdocs\web-surat\resources\views/desa/profildesa/ubah.blade.php ENDPATH**/ ?>

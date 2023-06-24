@@ -49,7 +49,7 @@
                                 <td>{{$cst->name_village}}</td>
                             </tr>
                             <tr>
-                                <td>LOKASI DESA</td>
+                                <td>Alamat</td>
                                 <td>:</td>
                                 <td>{{$cst->lokasi_desa}}</td>
                             </tr>

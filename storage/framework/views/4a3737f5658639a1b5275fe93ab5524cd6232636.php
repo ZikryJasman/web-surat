@@ -49,7 +49,7 @@
                                 <td><?php echo e($cst->name_village); ?></td>
                             </tr>
                             <tr>
-                                <td>LOKASI DESA</td>
+                                <td>Alamat</td>
                                 <td>:</td>
                                 <td><?php echo e($cst->lokasi_desa); ?></td>
                             </tr>
@@ -57,7 +57,7 @@
                                 <td>LOGO</td>
                                 <td>:</td>
                                 <td>
-                                    <img src="<?php echo e(asset('foto')); ?>/<?php echo e($cst->logo); ?>" width="70">
+                                    <img src="<?php echo e($cst->logo); ?>" width="70">
                                 </td>
                             </tr>
                             <?php echo $__env->make('desa/profildesa/ganti', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
