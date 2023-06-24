@@ -48,7 +48,7 @@ class StaffController extends Controller
             // $foto = $files->getClientOriginalName();
             // $namaFileBaru = uniqid();
             // $namaFileBaru .= $foto;
-            $namaFileBaru = uploadFoto($request->upload_berkas, 'admin/' . Auth::user()->id, true);
+            $namaFileBaru = uploadFile($request->upload_berkas, 'admin/' . Auth::user()->id, true);
 
             // $pengajuan->upload_berkas = $namaFileBaru;
             // $pengajuan->path_upload = $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru);
