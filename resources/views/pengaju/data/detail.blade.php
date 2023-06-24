@@ -68,7 +68,8 @@
                     <div class="col-lg-2">
                         @foreach ($pelengkap as $br)
                             @if ($br->pengajuan_id == $dt->id_pengajuan)
-                                <img src="{{ $br->data_berkas }}" width="50">
+                                <img src="{{ 'https://indonesiasehat.org/web-surat/public/' . $br->data_berkas }}"
+                                    width="50">
                             @endif
                         @endforeach
                     </div>
