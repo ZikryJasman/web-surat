@@ -43,12 +43,12 @@ class StaffController extends Controller
     }
     public function keterangan(Request $request, $id_pengajuan)
     {
-        if ($request->file) {
+        if ($request->upload_berkas) {
             // $files = $request->file('upload_berkas');
             // $foto = $files->getClientOriginalName();
             // $namaFileBaru = uniqid();
             // $namaFileBaru .= $foto;
-            $namaFileBaru = uploadFoto($request->file, 'admin/' . Auth::user()->id, true);
+            $namaFileBaru = uploadFoto($request->upload_berkas, 'admin/' . Auth::user()->id, true);
 
             // $pengajuan->upload_berkas = $namaFileBaru;
             // $pengajuan->path_upload = $files->move(\base_path() . "/public/pengajuan_berkas", $namaFileBaru);
