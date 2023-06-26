@@ -32,12 +32,12 @@ class StaffController extends Controller
         } else if ($request->search && $request->program_id) {
             $data = User::where('name', 'like', "%$request->search%")->where('program_id', $request->program_id)->join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
         } else
-            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->orderByDesc('pengajuan.id_pengajuan')->paginate(5)->withQueryString();
+            $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->whereNull('pengajuan.selesai')->orWhere('pengajuan.selesai', 'Lengkapi data')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->orderByDesc('pengajuan.id_pengajuan')->paginate(5);
         return view('staff/acc/acc', compact('data', 'program'));
     }
     public function staff_cek_berkas($surat, $id_pengajuan)
     {
-        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->get();
+        $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->firstOrFail();
         $berkas = DB::table('berkas_pengajuan')->join('pengajuan', 'pengajuan.id_pengajuan', '=', 'berkas_pengajuan.pengajuan_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->get();
         return view('staff/acc/cek', compact('data', 'berkas'));
     }
@@ -55,7 +55,6 @@ class StaffController extends Controller
             DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
                 'status_pengajuan' => $request->keterangan,
                 'upload_berkas' => $namaFileBaru,
-                'path_upload' => $namaFileBaru
             ]);
         } else {
             if ($request->keterangan == 'Data Belum Lengkap') {

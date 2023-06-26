@@ -12,8 +12,10 @@
                     </form>
                 </div>
                 <div class="col-lg-7">
-            <a href="<?php echo e(asset('pengajuan_berkas')); ?>/<?php echo e($dt->upload_berkas); ?>" class="btn btn-sm form-control btn-success mt-2">Lihat Surat</a>
-        </div>
+                    
+
+                    <iframe style="width:400px;height:700px" src="<?php echo e($dt->upload_berkas); ?>" frameborder="0"></iframe>
+                </div>
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>

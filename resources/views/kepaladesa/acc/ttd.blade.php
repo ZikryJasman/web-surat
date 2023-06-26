@@ -14,8 +14,12 @@
                     </form>
                 </div>
                 <div class="col-lg-7">
-                    <a href="{{ 'https://indonesiasehat.org/web-surat/public/' . $dt->upload_berkas }}"
-                        class="btn btn-sm form-control btn-success mt-2">Lihat Surat</a>
+                    {{-- <a href="{{ 'https://indonesiasehat.org/web-surat/public/' . $dt->upload_berkas }}"
+                        class="btn btn-sm form-control btn-success mt-2">Lihat Surat</a> --}}
+
+                    <iframe style="width:400px;height:700px"
+                        src="{{ 'https://indonesiasehat.org/web-surat/public/' . $dt->upload_berkas }}"
+                        frameborder="0"></iframe>
                 </div>
             </div>
         @endforeach

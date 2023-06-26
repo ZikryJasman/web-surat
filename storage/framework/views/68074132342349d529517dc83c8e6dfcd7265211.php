@@ -63,7 +63,7 @@
                                                     class="icon dripicons-document-edit"></i></a>
                                         <?php endif; ?>
                                         <?php if($dt->selesai == 'Surat Selesai'): ?>
-                                            <a href="<?php echo e($dt->upload_berkas); ?>"
+                                            <a href="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $dt->upload_berkas); ?>"
                                                 target="_blank" class="btn btn-sm btn-success rounded-pill"><i
                                                     class="icon dripicons-print"></i></a>
                                         <?php endif; ?>

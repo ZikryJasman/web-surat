@@ -65,6 +65,13 @@
 
                         <?php endif; ?>
                     </div>
+                    <div class="col-lg-6 mb-1">
+                        Berkas Word :
+                    </div>
+                    <div class="col-lg-6 mb-1 text-black">
+                        <a href="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $dt->path_upload); ?>"
+                            target="_blank"> <?php echo e($dt->path_upload); ?></a>
+                    </div>
                     <!-- <div class="col-lg-6 mt-5">
                 <b><i>Note : </i></b>
             </div>
@@ -72,13 +79,14 @@
                 <i><b>SILAHKAN TUNGGU PENGAJUAN SEDANG DI VERIFIKASI, INFO AKAN DI KIRIM MELALUI EMAIL ANDA.</b></i>
             </div> -->
                     <hr>
-                    <?php $__currentLoopData = $pelengkap; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $br): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php if($br->pengajuan_id == $dt->id_pengajuan): ?>
-                            <div class="col-lg-2">
-                                <img src="<?php echo e($br->data_berkas); ?>" width="50">
-                            </div>
-                        <?php endif; ?>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-lg-2">
+                        <?php $__currentLoopData = $pelengkap; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $br): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($br->pengajuan_id == $dt->id_pengajuan): ?>
+                                <img src="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $br->data_berkas); ?>"
+                                    width="50">
+                            <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

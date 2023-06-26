@@ -58,6 +58,13 @@
                             {{ $dt->status_pengajuan }}
                         @endif
                     </div>
+                    <div class="col-lg-6 mb-1">
+                        Berkas Word :
+                    </div>
+                    <div class="col-lg-6 mb-1 text-black">
+                        <a href="{{ 'https://indonesiasehat.org/web-surat/public/' . $dt->path_upload }}"
+                            target="_blank"> {{ $dt->path_upload }}</a>
+                    </div>
                     <!-- <div class="col-lg-6 mt-5">
                 <b><i>Note : </i></b>
             </div>

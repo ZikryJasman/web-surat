@@ -80,6 +80,12 @@ class PengajuController extends Controller
         }
         $pengajuan->tgl_req = now();
         $pengajuan->keperluan = $request->keperluan;
+        if ($request->path_upload) {
+            $path = uploadFile($request->path_upload, 'admin/' . Auth::user()->id, true);
+        } else {
+            $path = null;
+        }
+        $pengajuan->path_upload =  $path;
         $pengajuan->nomor_surat = $bulan . '-' . date('d-Y');
         $pengajuan->save();
 

@@ -69,8 +69,8 @@
                                             </span>
                                         <?php endif; ?>
                                     </td>
-                                    <td> <a href="<?php echo e($dt->upload_berkas); ?>" target="_blank"
-                                            class="btn btn-sm btn-success rounded-pill"><i
+                                    <td> <a href="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $dt->upload_berkas); ?>"
+                                            target="_blank" class="btn btn-sm btn-success rounded-pill"><i
                                                 class="icon dripicons-print"></i></a></td>
                                 </tr>
                                 <?php $no++; ?>

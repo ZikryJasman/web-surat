@@ -28,7 +28,8 @@
                                         src="<?php echo e(asset('template/dist/assets/images/faces/1.jpg')); ?>" alt="Face 1"></a>
                             <?php else: ?>
                                 <a href="<?php echo e(route('profil_desa', Auth::user()->title_user)); ?>"><img
-                                        src="<?php echo e($dpf->logo); ?>" alt="Face 1"></a>
+                                        src="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $dpf->logo); ?>"
+                                        alt="Face 1"></a>
                             <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php else: ?>
@@ -38,7 +39,8 @@
                                         src="<?php echo e(asset('template/dist/assets/images/faces/1.jpg')); ?>" alt="Face 1"></a>
                             <?php else: ?>
                                 <a href="<?php echo e(route('profil_pengaju')); ?>"><img
-                                        src="<?php echo e($usp->foto_profil); ?>" alt="Face 1"></a>
+                                        src="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $usp->foto_profil); ?>"
+                                        alt="Face 1"></a>
                             <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php endif; ?>

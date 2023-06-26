@@ -99,10 +99,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-12">
+                    <h6>Upload berkas Ms.Word</h6>
+                    <div class="form-group position-relative">
+                        <input type="file" required name="path_upload"  class="form-control">
+                    </div>
+
+                </div>
             </div>
             <div class="row" id="after-add-more">
                 <div class="col-xl-12">
-                    <h6>Berkas Persyaratan</h6>
+                    <h6>Berkas Persyaratan (format png,jpg,webp)</h6>
                     <div class="form-group position-relative">
                         <input type="file" name="berkas[]" multiple id="images" class="form-control">
                     </div>
