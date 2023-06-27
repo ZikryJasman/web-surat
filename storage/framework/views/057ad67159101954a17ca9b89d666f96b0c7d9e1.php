@@ -29,6 +29,12 @@
                                                         Lengkap</option>
                                                 </select>
                                                 <input type="hidden" value="<?php echo e($data->singkatan); ?>" name="singkatan">
+                                                <label for="first-name-vertical" style="color:red;padding-top: .5rem">Catatan
+                                                    Staff(<span style="font-size: 12px">input jika berkas tidak
+                                                        lengkap</span>)</label>
+                                                <div class="form-group position-relative">
+                                                    <textarea class="form-control text-black" name="note" id="note" rows="3"><?php echo e($data->note); ?></textarea>
+                                                </div>
                                                 <label for="first-name-vertical" style="padding-top: .5rem">Upload
                                                     Berkas Pdf (<span style="font-size: 12px">input jika berkas sudah
                                                         lengkap</span>)</label>
@@ -185,8 +191,11 @@
                             <div class="form-body">
                                 <?php $__currentLoopData = $berkas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="row mt-2">
-                                        <img src="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $brk->data_berkas); ?>"
-                                            class="img-thumbnail">
+                                        <a href="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $brk->data_berkas); ?>"
+                                            target="_blank">
+                                            <img src="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $brk->data_berkas); ?>"
+                                                class="img-thumbnail">
+                                        </a>
                                     </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>

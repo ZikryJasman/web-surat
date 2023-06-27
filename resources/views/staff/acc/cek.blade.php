@@ -31,6 +31,12 @@
                                                         Lengkap</option>
                                                 </select>
                                                 <input type="hidden" value="{{ $data->singkatan }}" name="singkatan">
+                                                <label for="first-name-vertical" style="color:red;padding-top: .5rem">Catatan
+                                                    Staff(<span style="font-size: 12px">input jika berkas tidak
+                                                        lengkap</span>)</label>
+                                                <div class="form-group position-relative">
+                                                    <textarea class="form-control text-black" name="note" id="note" rows="3">{{ $data->note }}</textarea>
+                                                </div>
                                                 <label for="first-name-vertical" style="padding-top: .5rem">Upload
                                                     Berkas Pdf (<span style="font-size: 12px">input jika berkas sudah
                                                         lengkap</span>)</label>
@@ -191,8 +197,11 @@
                             <div class="form-body">
                                 @foreach ($berkas as $brk)
                                     <div class="row mt-2">
-                                        <img src="{{ 'https://indonesiasehat.org/web-surat/public/' . $brk->data_berkas }}"
-                                            class="img-thumbnail">
+                                        <a href="{{ 'https://indonesiasehat.org/web-surat/public/' . $brk->data_berkas }}"
+                                            target="_blank">
+                                            <img src="{{ 'https://indonesiasehat.org/web-surat/public/' . $brk->data_berkas }}"
+                                                class="img-thumbnail">
+                                        </a>
                                     </div>
                                 @endforeach
                             </div>

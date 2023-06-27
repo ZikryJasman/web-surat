@@ -38,7 +38,7 @@ class StaffController extends Controller
     public function staff_cek_berkas($surat, $id_pengajuan)
     {
         $data = User::join('info_lengkap', 'users.id', '=', 'info_lengkap.user_id')->join('pengajuan', 'pengajuan.user_id', '=', 'info_lengkap.user_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->firstOrFail();
-        $berkas = DB::table('berkas_pengajuan')->join('pengajuan', 'pengajuan.id_pengajuan', '=', 'berkas_pengajuan.pengajuan_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->where('pengajuan.selesai', '=', NULL)->orWhere('pengajuan.selesai', '=', 'Lengkapi data')->get();
+        $berkas = DB::table('berkas_pengajuan')->join('pengajuan', 'pengajuan.id_pengajuan', '=', 'berkas_pengajuan.pengajuan_id')->join('surat', 'surat.id_surat', '=', 'pengajuan.surat_id')->where('surat.singkatan', $surat)->where('pengajuan.id_pengajuan', $id_pengajuan)->get();
         return view('staff/acc/cek', compact('data', 'berkas'));
     }
     public function keterangan(Request $request, $id_pengajuan)
@@ -61,6 +61,7 @@ class StaffController extends Controller
                 DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
                     'status_pengajuan' => $request->keterangan,
                     'selesai' => 'Lengkapi data',
+                    'note' => $request->note ?? '',
                 ]);
                 return redirect(route('staff_acc', $request->singkatan))->with('up', '-');
             } else {
