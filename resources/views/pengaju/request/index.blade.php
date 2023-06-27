@@ -27,22 +27,22 @@
                                     ?>
                                 </div>
                             </div>
-                            @if ($dt->singkatan == 'SKMK')
+                            @if ($surat->singkatan == 'SKMK')
                                 <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Keterangan_Masih_Kuliah.docx"
                                     target="_blank">Download Surat</a>
-                            @elseif($dt->singkatan == 'SRD')
+                            @elseif($surat->singkatan == 'SRD')
                                 <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi.docx"
                                     target="_blank">Download Surat</a>
-                            @elseif($dt->singkatan == 'SD')
+                            @elseif($surat->singkatan == 'SD')
                                 <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Dispensasi_Kuliah.docx"
                                     target="_blank">Download Surat</a>
-                            @elseif($dt->singkatan == 'STM')
+                            @elseif($surat->singkatan == 'STM')
                                 <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Tugas_Mahasiswa.docx"
                                     target="_blank">Download Surat</a>
-                            @elseif($dt->singkatan == 'SPTMB')
+                            @elseif($surat->singkatan == 'SPTMB')
                                 <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Pernyataan_Tidak_Menerima_Beasiswa_Manapun.docx"
                                     target="_blank">Download Surat</a>
-                            @elseif($dt->singkatan == 'SRMB')
+                            @elseif($surat->singkatan == 'SRMB')
                                 <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi_Magang_Studi_Independen_Bersertifikat.docx"
                                     target="_blank">Download Surat</a>
                             @endif
