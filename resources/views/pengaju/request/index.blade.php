@@ -28,22 +28,22 @@
                                 </div>
                             </div>
                             @if ($surat->singkatan == 'SKMK')
-                                <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Keterangan_Masih_Kuliah.docx"
+                                <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Keterangan_Masih_Kuliah.docx"
                                     target="_blank">Download Surat</a>
                             @elseif($surat->singkatan == 'SRD')
-                                <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi.docx"
+                                <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi.docx"
                                     target="_blank">Download Surat</a>
                             @elseif($surat->singkatan == 'SD')
-                                <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Dispensasi_Kuliah.docx"
+                                <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Dispensasi_Kuliah.docx"
                                     target="_blank">Download Surat</a>
                             @elseif($surat->singkatan == 'STM')
-                                <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Tugas_Mahasiswa.docx"
+                                <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Tugas_Mahasiswa.docx"
                                     target="_blank">Download Surat</a>
                             @elseif($surat->singkatan == 'SPTMB')
-                                <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Pernyataan_Tidak_Menerima_Beasiswa_Manapun.docx"
+                                <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Pernyataan_Tidak_Menerima_Beasiswa_Manapun.docx"
                                     target="_blank">Download Surat</a>
                             @elseif($surat->singkatan == 'SRMB')
-                                <a href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi_Magang_Studi_Independen_Bersertifikat.docx"
+                                <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi_Magang_Studi_Independen_Bersertifikat.docx"
                                     target="_blank">Download Surat</a>
                             @endif
                             <hr>
