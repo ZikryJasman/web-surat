@@ -85,8 +85,7 @@
                             @if ($br->pengajuan_id == $dt->id_pengajuan)
                                 <a href="{{ 'https://indonesiasehat.org/web-surat/public/' . $br->data_berkas }}"
                                     target="_blank">
-                                    <img src="{{ 'https://indonesiasehat.org/web-surat/public/' . $br->data_berkas }}"
-                                        width="100">
+                                    <img src="{{ 'https://indonesiasehat.org/web-surat/public/' . $br->data_berkas }}">
                                 </a>
                             @endif
                         @endforeach
