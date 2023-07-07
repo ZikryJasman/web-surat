@@ -30,7 +30,7 @@
                             @if ($surat->singkatan == 'SKMK')
                                 <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Keterangan_Masih_Kuliah.docx"
                                     target="_blank">Download Surat</a>
-                            @elseif($surat->singkatan == 'SRD')
+                            @elseif($surat->singkatan == 'SRB')
                                 <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi.docx"
                                     target="_blank">Download Surat</a>
                             @elseif($surat->singkatan == 'SD')
