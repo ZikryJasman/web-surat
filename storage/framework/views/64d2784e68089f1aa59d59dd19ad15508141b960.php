@@ -195,20 +195,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="dripicons dripicons-graph-pie"></i>
-                            <span>ACC dan TTD</span>
-                        </a>
-                        <ul class="submenu ">
-                            <?php $__currentLoopData = $request; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $req): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <li class="submenu-item ">
-                                    <a
-                                        href="<?php echo e(route('kepaladesa_acc', $req->singkatan)); ?>"><?php echo e($req->singkatan); ?></a>
-                                </li>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </ul>
-                    </li>
+                    
                 <?php endif; ?>
                 <?php if(Auth::user()->level == 'Desa'): ?>
                     <li class="sidebar-item  <?php echo e(Route::currentRouteName() == 'profil_desa' ? 'active' : ''); ?>">

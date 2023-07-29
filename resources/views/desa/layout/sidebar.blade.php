@@ -206,7 +206,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="sidebar-item  has-sub">
+                    {{-- <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="dripicons dripicons-graph-pie"></i>
                             <span>ACC dan TTD</span>
@@ -219,7 +219,7 @@
                                 </li>
                             @endforeach
                         </ul>
-                    </li>
+                    </li> --}}
                 @endif
                 @if (Auth::user()->level == 'Desa')
                     <li class="sidebar-item  {{ Route::currentRouteName() == 'profil_desa' ? 'active' : '' }}">

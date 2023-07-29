@@ -18,6 +18,14 @@
                                 <label>Nama Program Studi</label>
                                 <input type="text" value="{{ $pgn->nama }}" class="form-control" name="nama">
                             </div>
+                            <div class="form-group">
+                                <label>Nama Fakultas</label>
+                                <input type="text" value="{{ $pgn->fakultas }}" required="" class="form-control" name="fakultas">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Dosen Pembimbing</label>
+                                <input type="text" value="{{ $pgn->dosen }}" required="" class="form-control" name="dosen">
+                            </div>
                         </div>
                     </div>
                     <button class="btn btn-sm btn-primary form-control mt-2">Ubah</button>

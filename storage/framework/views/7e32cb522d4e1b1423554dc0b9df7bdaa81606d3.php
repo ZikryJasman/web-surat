@@ -28,7 +28,7 @@
                             <?php if($surat->singkatan == 'SKMK'): ?>
                                 <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Keterangan_Masih_Kuliah.docx"
                                     target="_blank">Download Surat</a>
-                            <?php elseif($surat->singkatan == 'SRD'): ?>
+                            <?php elseif($surat->singkatan == 'SRB'): ?>
                                 <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi.docx"
                                     target="_blank">Download Surat</a>
                             <?php elseif($surat->singkatan == 'SD'): ?>
@@ -40,7 +40,7 @@
                             <?php elseif($surat->singkatan == 'SPTMB'): ?>
                                 <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Pernyataan_Tidak_Menerima_Beasiswa_Manapun.docx"
                                     target="_blank">Download Surat</a>
-                            <?php elseif($surat->singkatan == 'SRMB'): ?>
+                            <?php elseif($surat->singkatan == 'SMIB'): ?>
                                 <a class="btn btn-primary col-lg-4 col-sm-6 col-12 mx-2 mb-4" href="https://indonesiasehat.org/web-surat/public/Format_Surat/Surat_Rekomendasi_Magang_Studi_Independen_Bersertifikat.docx"
                                     target="_blank">Download Surat</a>
                             <?php endif; ?>

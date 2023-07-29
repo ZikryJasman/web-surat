@@ -72,13 +72,14 @@ class StaffController extends Controller
         }
         return redirect()->back()->with('up', '-');
     }
-    public function konfirmasi($singkatan, $id_pengajuan)
+    public function konfirmasi(Request $request)
     {
-        DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
-            'selesai' => 'Sudah di Konfirmasi',
+        DB::table('pengajuan')->where('id_pengajuan', $request->id_pengajuan)->update([
+            'selesai' => 'Surat Selesai',
+            'nomor_surat' => $request->nomor_surat,
             'status_pengajuan' => 'Data Sudah Lengkap',
         ]);
-        return redirect(route('staff_acc', $singkatan))->with('up', '-');
+        return redirect(route('staff_acc', $request->singkatan))->with('up', '-');
     }
 
     public function surat_selesai(Request $request)

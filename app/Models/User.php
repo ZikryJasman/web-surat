@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function pengajuans()
+    {
+        return $this->belongsToMany(Pengajuan::class);
+    }
 }

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('template/dist/assets/css/bootstrap.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    @stack('importcss')
     <link rel="stylesheet" href="{{ asset('template/dist/assets/vendors/iconly/bold.css') }}">
     <link rel="stylesheet" href="{{ asset('template/dist/assets/vendors/simple-datatables/style.css') }}">
     <link rel="stylesheet" href="{{ asset('template/dist/assets/vendors/simple-datatables/style.css') }}">
@@ -80,6 +80,7 @@
         let table1 = document.querySelector('#table1');
         // let dataTable = new simpleDatatables.DataTable(table1);
     </script>
+    @stack('childjs')
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
     {{-- <script src="{{ asset('template/dist/assets/vendors/apexcharts/apexcharts.js') }}"></script> --}}
     {{-- <script src="{{ asset('template/dist/assets/js/pages/dashboard.js') }}"></script> --}}

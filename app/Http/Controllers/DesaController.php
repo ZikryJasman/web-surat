@@ -253,6 +253,7 @@ class DesaController extends Controller
     {
         $program = new Program();
         $program->nama = $request->nama;
+        $program->dosen = $request->dosen;
         $program->save();
         $data = Program::orderByDesc('id')->paginate(5)->withQueryString();
         return view('desa.program.index', compact('data'));
@@ -262,6 +263,7 @@ class DesaController extends Controller
     {
         Program::where('id', $id)->update([
             'nama' => $request->nama,
+            'dosen' => $request->dosen,
         ]);
         $data = Program::orderByDesc('id')->paginate(5)->withQueryString();
         return view('desa.program.index', compact('data'));

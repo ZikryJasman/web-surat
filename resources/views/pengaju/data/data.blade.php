@@ -63,9 +63,9 @@
                                                     class="icon dripicons-document-edit"></i></a>
                                         @endif
                                         @if ($dt->selesai == 'Surat Selesai')
-                                            <a href="{{ 'https://indonesiasehat.org/web-surat/public/' . $dt->upload_berkas }}"
-                                                target="_blank" class="btn btn-sm btn-success rounded-pill"><i
-                                                    class="icon dripicons-print"></i></a>
+                                            <a href="{{ route('exportWord', ['idPengajuan' => $dt->id_pengajuan]) }}"
+                                                class="btn btn-sm btn-success rounded-pill"><i
+                                                class="icon dripicons-print"></i></a>
                                         @endif
                                     </td>
                                 </tr>

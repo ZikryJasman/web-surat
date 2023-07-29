@@ -91,7 +91,8 @@
                                              <?php if(empty($cst->foto_profil)): ?>
                                                  Tidak ada gambar
                                              <?php else: ?>
-                                                 <img src="<?php echo e($cst->foto_profil); ?>" width="70">
+                                                 <img src="<?php echo e('https://indonesiasehat.org/web-surat/public/' . $cst->foto_profil); ?>"
+                                                     width="70">
                                              <?php endif; ?>
                                          </td>
                                      </tr>
