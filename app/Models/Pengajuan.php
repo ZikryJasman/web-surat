@@ -10,9 +10,4 @@ class Pengajuan extends Model
     // use HasFactory;
     protected $table="pengajuan";
     protected $primaryKey="id_pengajuan";
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
 }

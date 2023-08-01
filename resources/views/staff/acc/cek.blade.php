@@ -31,8 +31,7 @@
                                                         Lengkap</option>
                                                 </select>
                                                 <input type="hidden" value="{{ $data->singkatan }}" name="singkatan">
-                                                <label for="first-name-vertical"
-                                                    style="color:red;padding-top: .5rem">Catatan
+                                                <label for="first-name-vertical" style="color:red;padding-top: .5rem">Catatan
                                                     Staff(<span style="font-size: 12px">input jika berkas tidak
                                                         lengkap</span>)</label>
                                                 <div class="form-group position-relative">
@@ -53,25 +52,12 @@
                                     </div>
                                     {{-- @endforeach --}}
                                     <div class="col-lg-6">
-                                        <form class="form form-vertical" method="post" action="{{ route('konfirmasi') }}">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label for="first-name-vertical">Konfirmasi</label>
-                                                <input type="hidden" name="surat" value="{{ $data->singkatan }}">
-                                                <input type="hidden" name="id_pengajuan" value="{{ $data->id_pengajuan }}">
-                                                <input class="form-control" type="text" name="nomor_surat"
-                                                    placeholder="Nomor Surat" required>
-                                                @if ($data->singkatan == 'STM' || $data->singkatan == 'SD')
-                                                    @if ($data->singkatan == 'STM')
-                                                        <textarea class="form-control" rows="3" name="why" required>Landasan Pengajuan(*wajib diisi)</textarea>
-                                                    @endif
-                                                    <textarea class="form-control" rows="3" name="reason" required>Alasan Pengajuan(*wajib diisi)</textarea>
-                                                @endif
-                                                <button type="submit"
-                                                    class="btn btn-sm btn-outline-success rounded-pill mt-2 form-control">
-                                                    <i class="icon dripicons-checkmark"></i> Simpan </button>
-                                            </div>
-                                        </form>
+                                        <div class="form-group">
+                                            <label for="first-name-vertical">Konfirmasi</label>
+                                            <a href="{{ route('konfirmasi', ['surat' => $data->singkatan, 'id_pengajuan' => $data->id_pengajuan]) }}"
+                                                class="btn btn-sm btn-outline-success rounded-pill mt-2 form-control">
+                                                <i class="icon dripicons-checkmark"></i> Confirm </a>
+                                        </div>
                                     </div>
                                     <hr>
                                     {{-- @foreach ($data as $dt) --}}

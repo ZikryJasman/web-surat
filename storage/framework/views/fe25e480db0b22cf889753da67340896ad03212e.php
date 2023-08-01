@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/css/bootstrap.css')); ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <?php echo $__env->yieldPushContent('importcss'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/vendors/iconly/bold.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/vendors/simple-datatables/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('template/dist/assets/vendors/simple-datatables/style.css')); ?>">
@@ -80,6 +80,7 @@
         let table1 = document.querySelector('#table1');
         // let dataTable = new simpleDatatables.DataTable(table1);
     </script>
+    <?php echo $__env->yieldPushContent('childjs'); ?>
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
     
     

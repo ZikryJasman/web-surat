@@ -89,7 +89,6 @@ Route::group(['middleware'=>['auth','ceklevel:Pengaju,Staff,Kepala Desa,Desa']],
 	Route::get('pengajuan/dashboard/request-permohonan/{surat}',[PengajuController::class,'request'])->name('request');
 	Route::post('pengajuan/dashboard/request-permohonan/add-permohonan',[PengajuController::class,'add_request'])->name('add_request');
 	Route::get('pengajuan/dashboard/data-status-permohonan/{surat}/update/{idPengajuan}',[PengajuController::class,'updateRequest'])->name('updateRequest');
-	Route::get('pengajuan/dashboard/data-status-permohonan/export-word/{idPengajuan}',[PengajuController::class,'exportWord'])->name('exportWord');
 	Route::get('pengajuan/dashboard/data-status-permohonan/{singkatan}',[PengajuController::class,'data_request'])->name('data_request');
 	Route::get('pengajuan/detail-profile',[PengajuController::class,'profil_pengaju'])->name('profil_pengaju');
 
@@ -98,7 +97,7 @@ Route::group(['middleware'=>['auth','ceklevel:Pengaju,Staff,Kepala Desa,Desa']],
 	Route::get('pengajuan/permohonan-surat/staff-acc/{surat}',[StaffController::class,'staff_acc'])->name('staff_acc');
 	Route::get('pengajuan/permohonan-surat/staff-acc/cek-perlengkapan-permohonan/{surat}/{id_pengajuan}',[StaffController::class,'staff_cek_berkas'])->name('staff_cek_berkas');
 	Route::post('pengajuan/permohonan-surat/staff-acc/cek-perlengkapan-permohonan/keterangan/{id_pengajuan}',[StaffController::class,'keterangan'])->name('keterangan');
-	Route::post('pengajuan/permohonan-surat/staff-acc/cek-perlengkapan-permohonan/konfirmasi',[StaffController::class,'konfirmasi'])->name('konfirmasi');
+	Route::get('pengajuan/permohonan-surat/staff-acc/cek-perlengkapan-permohonan/konfirmasi/{surat}/{id_pengajuan}',[StaffController::class,'konfirmasi'])->name('konfirmasi');
 	Route::get('pengajuan/permohonan-surat/staff/cek-surat/{surat}',[StaffController::class,'staff_cetak'])->name('staff_cetak');
 	Route::get('pengajuan/permohonan-surat/staff/cek-surat/cetak/{surat}/{id_pengajuan}',[StaffController::class,'cetak'])->name('cetak');
 	Route::get('pengajuan/permohonan-surat/cek-surat/cetak-pdf/{surat}/{id_pengajuan}',[StaffController::class,'cetak_surat'])->name('cetak_surat');
