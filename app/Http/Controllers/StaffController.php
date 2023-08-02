@@ -17,9 +17,21 @@ use Illuminate\Support\Facades\App;
 
 class StaffController extends Controller
 {
-    public function dashboard_staff()
+    public function dashboard_staff(Request $request)
     {
         $data = Surat::all();
+        foreach ($data as $dt) {
+            if ($request->date) {
+                $dt['2'] = Pengajuan::where('surat_id', $dt->id_surat)->whereDate('created_at', $request->date)->where('selesai', 'Surat Selesai')->count();
+                $dt['3'] = Pengajuan::where('surat_id', $dt->id_surat)->whereDate('created_at', $request->date)->where('status_pengajuan', 'Pengecekan Permohonan')->count();
+                $dt['4'] = Pengajuan::where('surat_id', $dt->id_surat)->whereDate('created_at', $request->date)->where('status_pengajuan', 'Data Belum Lengkap')->where('selesai', 'Lengkapi data')->count();
+            } else {
+                $dt['2'] = Pengajuan::where('surat_id', $dt->id_surat)->where('selesai', 'Surat Selesai')->count();
+                $dt['3'] = Pengajuan::where('surat_id', $dt->id_surat)->where('status_pengajuan', 'Pengecekan Permohonan')->count();
+                $dt['4'] = Pengajuan::where('surat_id', $dt->id_surat)->where('status_pengajuan', 'Data Belum Lengkap')->where('selesai', 'Lengkapi data')->count();
+            }
+        }
+
         return view('staff/home/home', compact('data'));
     }
     public function staff_acc(Request $request, $surat)
@@ -75,7 +87,7 @@ class StaffController extends Controller
     public function konfirmasi($singkatan, $id_pengajuan)
     {
         DB::table('pengajuan')->where('id_pengajuan', $id_pengajuan)->update([
-            'selesai' => 'Sudah di Konfirmasi',
+            'selesai' => 'Surat Selesai',
             'status_pengajuan' => 'Data Sudah Lengkap',
         ]);
         return redirect(route('staff_acc', $singkatan))->with('up', '-');
